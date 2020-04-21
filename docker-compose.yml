@@ -7,23 +7,25 @@ services:
     build:
       context: ./src/client
       dockerfile: ../../docker/Dockerfile
-    working_dir: /app/src/client
-    command: npm start
     volumes:
-      - '.:/app'
+      - './src/client:/app'
+      - '/app/node_modules'
     ports:
       - 3000:3000
+    command: npm start
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
 
   server:
     container_name: server
     build:
       context: ./src/server
       dockerfile: ../../docker/Dockerfile
-    working_dir: /app/src/server
     command: npm start
     volumes:
-    - '.:/app'
-
+      - './src/server:/app'
+      - '/app/node_modules'
     ports:
       - 9000:9000
 
