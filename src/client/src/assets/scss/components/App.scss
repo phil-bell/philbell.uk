@@ -1,0 +1,19 @@
+body{
+    margin: 0;
+}
+.app{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+
+    &__page{
+        margin: auto
+    }
+
+    &__content{
+        &__text{
+
+        }
+    }
+
+}
