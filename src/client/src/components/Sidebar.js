@@ -1,18 +1,17 @@
 import React from 'react';
-import '../assets/scss/components/Sidebar.scss'
+import { Link } 
+from "react-router-dom";import '../assets/scss/components/Sidebar.scss'
 
 function Sidebar() {
 
     return (
         <div className="sidebar">
             <div className="sidebar__top">
-                <a className="sidebar__link">Home</a>
-                <a className="sidebar__link">Resume</a>
-                <a className="sidebar__link">Admin</a>
-            </div>
-            <div className="sidebar__bot">
-                <a className="sidebar__link">Login</a>
-                <a className="sidebar__link">Contact</a>
+                <Link className="sidebar__link" to="/">Home</Link>
+                <Link className="sidebar__link" to="/resume">Resume</Link>
+                <Link className="sidebar__link" to="/admin">Admin</Link>
+                <Link className="sidebar__link" to="/login">Login</Link>
+                <Link className="sidebar__link" to="/contact">Contact</Link>
             </div>
         </div>
     )
