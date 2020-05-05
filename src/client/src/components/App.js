@@ -1,8 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import '../assets/scss/components/App.scss';
 import Sidebar from './Sidebar';
-import Container from './Container';
 import Home from './Home';
 import Admin from './Admin';
 import Contact from './Contact';
@@ -16,13 +15,13 @@ function App() {
     <Router>
       <div className="app">
         <Sidebar></Sidebar>
-        <div className="app__page">
-          <Route exact path="/" component={Home} />
-          <Route path="/admin" component={Admin} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/login" component={Login} />
-          <Route path="/resume" component={Resume} />
-        </div>
+        <Switch>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/admin" component={Admin}></Route>
+          <Route path="/contact" component={Contact}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/resume" component={Resume}></Route>
+        </Switch>
       </div>
     </Router>
   );
