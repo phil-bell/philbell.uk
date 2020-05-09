@@ -1,12 +1,12 @@
 import React from 'react';
 import '../assets/scss/components/Container.scss';
 
-function Container() {
+function Container(props) {
 
     return (
         <div className="container">
             <div className="app__content">
-            <p className="app__content__text">Hello there! test</p>
+                <p className="app__content__text">{props.children}</p>
             </div>
         </div>
     )
