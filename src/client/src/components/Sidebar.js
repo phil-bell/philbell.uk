@@ -10,6 +10,8 @@ function Sidebar() {
                 <Link className="sidebar__link" to="/">Home</Link>
                 <Link className="sidebar__link" to="/resume">Resume</Link>
                 <Link className="sidebar__link" to="/admin">Admin</Link>
+            </div>
+            <div className="sidebar__bot">
                 <Link className="sidebar__link" to="/login">Login</Link>
                 <Link className="sidebar__link" to="/contact">Contact</Link>
             </div>
