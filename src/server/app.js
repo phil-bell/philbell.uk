@@ -6,8 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var testRouter = require('./routes/test');
-const User = require('./models/User.js');
-
+const User = require('./routes/users');
+const mongoose = require('mongoose');
+try {
+  mongoose.connect('mongodb://db:27017/db', { useNewUrlParser: true });
+  console.log("Successfully connnected to mongo server...")
+} catch (error) {
+  handleError(error);
+}
 
 var app = express();
 
