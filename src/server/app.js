@@ -3,19 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var testRouter = require('./routes/test');
+
 const User = require('./routes/users');
 const mongoose = require('mongoose');
-try {
-  mongoose.connect('mongodb://db:27017/db', { useNewUrlParser: true });
-  console.log("Successfully connnected to mongo server...")
-} catch (error) {
-  handleError(error);
-}
 
 var app = express();
+
+app.use(function(){
+  try {
+    mongoose.connect('mongodb://db:27017/db', { useNewUrlParser: true });
+    console.log("Successfully connnected to mongo server...")
+  } catch (error) {
+    handleError(error);
+  }
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
