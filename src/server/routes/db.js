@@ -24,13 +24,13 @@ function create_admin() {
         return user;
       } else {
         console.log("No admin found, creating admin...");
-        const phil = new Users({
+        const user = new Users({
           username: "phil",
           password: "pass",
           perms: "admin",
         });
-        phil.save();
-        return phil;
+        user.save();
+        return user;
       }
     }
   });
