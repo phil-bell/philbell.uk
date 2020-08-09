@@ -28,17 +28,14 @@ app.post("/api/register", (req, res) => {
 });
 
 app.post("/api/login", (req, res) => {
-  console.log(req);
   const username = req.body.username;
   const password = req.body.password;
-  console.log(username);
-  console.log(password);
   Users.find({ username: username, password: password }, (err, user) => {
     if (err) {
       res.send(err);
     } else {
-      console.log(user.length > 0);
-      res.send(user.length > 0);
+      console.log(user)
+      res.send({"valid": user.length > 0, "user": user});
     }
   });
 });

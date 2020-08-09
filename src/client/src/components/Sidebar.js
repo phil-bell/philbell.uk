@@ -1,15 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/scss/components/Sidebar.scss";
-import isAuthenticated from "./App";
 
 export default class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: this.firstUpper(localStorage.username),
-    };
-  }
 
   firstUpper(string) {
     return string.replace(/(^\w{1})|(\s{1}\w{1})/g, (match) =>
@@ -39,22 +32,22 @@ export default class Sidebar extends React.Component {
           <Link
             className="sidebar__link"
             to="/login"
-            hidden={isAuthenticated()}
+            hidden={false}
           >
-            Login - {isAuthenticated()}
+            Login - {this.props.loggedIn}
           </Link>
           <Link
             className="sidebar__link"
             to="/profile"
-            hidden={!isAuthenticated()}
+            hidden={true}
           >
-            {this.state.username}
+            {this.props.user.username}
           </Link>
           <Link
             className="sidebar__link"
             to="/login"
             onClick={this.logout}
-            hidden={!isAuthenticated()}
+            hidden={true}
           >
             Logout
           </Link>
