@@ -1,0 +1,12 @@
+:root{
+    --bg-color: "#000000";
+    --font-color: "#ffffff";
+    --font-family: "Tajawal";
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: var(--font-family);
+    display: flex;
+}
