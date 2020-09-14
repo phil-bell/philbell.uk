@@ -1,0 +1,18 @@
+:root{
+    --bg-color: black;
+    --font-color: white;
+    --font-family: "Tajawal";
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: var(--font-family);
+    display: flex;
+}
+
+.content--center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
