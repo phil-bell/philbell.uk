@@ -298,7 +298,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PhilNavBar\", function() { return PhilNavBar; });\n/* harmony import */ var lit_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-element */ \"./node_modules/lit-element/lit-element.js\");\n\n\nclass PhilNavBar extends lit_element__WEBPACK_IMPORTED_MODULE_0__[\"LitElement\"]{\n\n}\n\n//# sourceURL=webpack:///./static-src/js/components/phil-nav-bar.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PhilNavBar\", function() { return PhilNavBar; });\n/* harmony import */ var lit_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lit-element */ \"./node_modules/lit-element/lit-element.js\");\n\n\nclass PhilNavBar extends lit_element__WEBPACK_IMPORTED_MODULE_0__[\"LitElement\"]{\n    static get styles() {\n        return lit_element__WEBPACK_IMPORTED_MODULE_0__[\"css\"]`\n        `;\n    }\n    render() {\n        return lit_element__WEBPACK_IMPORTED_MODULE_0__[\"html\"]`\n            <div>\n                <div>Home</div>\n                <div>Resume</div>\n                <div>Plex</div>\n                <div>Admin</div>\n            </div>\n        `;\n    }\n\n}\n\ncustomElements.define('phil-nav-bar', PhilNavBar);\n\n\n//# sourceURL=webpack:///./static-src/js/components/phil-nav-bar.js?");
 
 /***/ }),
 
@@ -310,7 +310,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_phil_nav_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/phil-nav-bar */ \"./static-src/js/components/phil-nav-bar.js\");\n\n\n//# sourceURL=webpack:///./static-src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _components_phil_nav_bar_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/phil-nav-bar.js */ \"./static-src/js/components/phil-nav-bar.js\");\n\n\n//# sourceURL=webpack:///./static-src/js/index.js?");
 
 /***/ })
 

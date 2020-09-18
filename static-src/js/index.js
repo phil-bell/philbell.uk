@@ -1,1 +1,1 @@
-import "./components/phil-nav-bar"
+import "./components/phil-nav-bar.js"
