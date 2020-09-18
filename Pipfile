@@ -8,10 +8,12 @@ verify_ssl = true
 [packages]
 django = "*"
 psycopg2 = "*"
+typer = "*"
 
 [requires]
 python_version = "3.8"
 
 [scripts]
-start = "python manage.py runserver"
+start = "python run.py"
 migrate = "python manage.py migrate"
+collect = "python manage.py collectstatic"
