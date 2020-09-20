@@ -21,5 +21,6 @@ python_version = "3.8"
 [scripts]
 start = "python run.py"
 migrate = "python manage.py migrate"
+makemig = "python manage.py makemigrations"
 collect = "python manage.py collectstatic"
 format = "black . --line-length 99"

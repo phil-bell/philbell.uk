@@ -1,8 +1,8 @@
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 from django.urls import reverse
-from linkedin_scraper import Person
 
+from .models import Experience, Education
 
 class HomePageView(TemplateView):
     template_name = "home.html"
@@ -17,7 +17,8 @@ class ResumeView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["profile"] = Person("https://www.linkedin.com/in/phil-bell/")
+        context["experience"] = Experience.objects.all()
+        context["education"] = Education.objects.all()
         return context
 
 

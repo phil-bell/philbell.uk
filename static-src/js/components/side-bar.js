@@ -15,7 +15,7 @@ export class SideBar extends LitElement {
         display: block;
         position: relative;
         top: 50px;
-        left: 50px;
+        left: 25px;
         z-index: 1;
         -webkit-user-select: none;
         user-select: none;
@@ -94,7 +94,7 @@ export class SideBar extends LitElement {
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
-        background: var(--bg-color);
+        background: transparent;
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
         transform-origin: 0% 0%;
