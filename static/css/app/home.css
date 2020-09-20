@@ -1,7 +1,8 @@
 :root{
     --bg-color: black;
     --font-color: white;
-    --font-family: "Tajawal";
+    --hover-color: #fcba03;
+    --font-family: 'Kumbh Sans', sans-serif;
 }
 
 body{
