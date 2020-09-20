@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from .models import Experience, Education
 
+
 class HomePageView(TemplateView):
     template_name = "home.html"
 
