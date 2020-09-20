@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import HomePageView
+from .views import HomePageView, PlexView, NavConfigView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomePageView.as_view(), name="home")
+    path('', HomePageView.as_view(), name="home"),
+    path('plex/', PlexView.as_view(), name="plex"),
+    path('get-nav-config', NavConfigView.as_view(), name="get-nav-config")
 ]
