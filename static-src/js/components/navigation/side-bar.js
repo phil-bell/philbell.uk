@@ -11,7 +11,7 @@ export class SideBar extends LitElement {
         font-family: var(--font-family);
       }
 
-      #menuToggle {
+      .menu__toggle {
         display: block;
         position: relative;
         top: 50px;
@@ -21,21 +21,21 @@ export class SideBar extends LitElement {
         user-select: none;
       }
 
-      #menuToggle input:hover ~ span{
+      .menu__toggle input:hover ~ span{
         background: var(--hover-color);
       }
 
-      #menuToggle a {
+      .menu__toggle a {
         text-decoration: none;
         color: var(--font-color);
         transition: color 0.3s ease;
       }
 
-      #menuToggle a:hover {
+      .menu__toggle a:hover {
         color: var(--hover-color);
       }
 
-      #menuToggle input {
+      .menu__toggle input {
         display: block;
         width: 40px;
         height: 32px;
@@ -48,7 +48,7 @@ export class SideBar extends LitElement {
         -webkit-touch-callout: none;
       }
 
-      #menuToggle span {
+      .menu__toggle span {
         display: block;
         width: 33px;
         height: 4px;
@@ -62,33 +62,33 @@ export class SideBar extends LitElement {
         background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
       }
 
-      #menuToggle input:hover > span {
+      .menu__toggle input:hover > span {
         background: var(--hover-color);
       }
 
-      #menuToggle span:first-child {
+      .menu__toggle span:first-child {
         transform-origin: 0% 0%;
       }
 
-      #menuToggle span:nth-last-child(2) {
+      .menu__toggle span:nth-last-child(2) {
         transform-origin: 0% 100%;
       }
 
-      #menuToggle input:checked ~ span {
+      .menu__toggle input:checked ~ span {
         opacity: 1;
         transform: rotate(45deg) translate(-2px, -1px);
       }
 
-      #menuToggle input:checked ~ span:nth-last-child(3) {
+      .menu__toggle input:checked ~ span:nth-last-child(3) {
         opacity: 0;
         transform: rotate(0deg) scale(0.2, 0.2);
       }
 
-      #menuToggle input:checked ~ span:nth-last-child(2) {
+      .menu__toggle input:checked ~ span:nth-last-child(2) {
         transform: rotate(-45deg) translate(0, -1px);
       }
 
-      #menu {
+      .menu__list {
         position: absolute;
         width: auto;
         margin: -100px 0 0 -50px;
@@ -102,12 +102,12 @@ export class SideBar extends LitElement {
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
       }
 
-      #menu li {
+      .menu__list li {
         padding: 10px 0;
         font-size: 22px;
       }
 
-      #menuToggle input:checked ~ ul {
+      .menu__toggle input:checked ~ ul {
         transform: none;
       }
     `;
@@ -121,20 +121,18 @@ export class SideBar extends LitElement {
   async connectedCallback(){
     this.navConfig = await fetch(`${window.location.origin}/get-nav-config`)
       .then(response => response.json())
-    console.log(this.navConfig)
     super.connectedCallback()
   }
 
   render() {
-    console.log(this.navConfig)
     return html`
       <nav role="navigation">
-        <div id="menuToggle">
+        <div class="menu__toggle">
           <input type="checkbox" />
           <span></span>
           <span></span>
           <span></span>
-          <ul id="menu">
+          <ul class="menu__list">
             ${this.navConfig.map((item) => html`<a href="${item.url}"><li>${item.name}</li></a>`)}
           </ul>
         </div>
