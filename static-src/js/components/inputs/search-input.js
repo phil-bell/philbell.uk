@@ -65,15 +65,27 @@ export class SearchInput extends LitElement{
         `
     }
 
+    constructor(){
+        super()
+        this.value = ""
+    }
+
     render(){
         return html`
         <div class="search__container">
-            <input id="search-input" class="search__input" placeholder=" " type="text">
+            <input
+                id="search-input"
+                class="search__input"
+                placeholder=" "
+                type="text"
+                @model-value-changed="${(e) => {
+                    this.value=e.target.modelValue
+                }}"
+            >
             <label class="search__label" for="search-input">search</label>
         </div>
         `
     }
-
 }
 
 customElements.define("search-input", SearchInput);
