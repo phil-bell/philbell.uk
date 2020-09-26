@@ -4,6 +4,8 @@ from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 from django.urls import reverse
 
+from we_get.core.we_get import WG
+
 from .models import Experience, Education
 
 
@@ -16,7 +18,10 @@ class PlexView(TemplateView):
 
     def post(self, request):
         term = json.loads(request.body)["term"]
-        return JsonResponse({"term": term})
+        we_get = WG()
+        we_get.parse_arguments(['--search', term, '--target', 'yts,1337x,eztv'])
+        res = we_get.start(api_mode=True)
+        return JsonResponse({"term": term, "results": res})
 
 
 class ResumeView(TemplateView):

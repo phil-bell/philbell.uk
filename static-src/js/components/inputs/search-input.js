@@ -11,13 +11,13 @@ export class SearchInput extends LitElement{
                 display: flex;
                 justify-content: center;
             }
-            :host .search__container{
+            .search__container{
                 width: 100%;
                 display: flex;
                 flex-direction: column;
 
             }
-            :host .search__label{
+            .search__label{
                 font-size: 16px;
                 position: relative;
                 bottom: 27px;
@@ -28,7 +28,7 @@ export class SearchInput extends LitElement{
                 -webkit-transition: 0.2s ease all;
 
             }
-            :host .search__input{
+            .search__input{
                 font-size: 16px;
                 font-family: var(--font-family);
                 -webkit-font-smoothing: antialiased;
@@ -42,46 +42,59 @@ export class SearchInput extends LitElement{
                 margin: auto;
                 transition: border-color 0.25s ease-in-out;
             }
-            :host .search__input:hover:not(:focus){
+            .search__input:hover:not(:focus){
                 color: var(--hover-color);
             }
-            :host .search__input:hover ~ .search__label{
+            .search__input:hover ~ .search__label{
                 color: var(--hover-color);
             }
-            :host .search__input:focus{
+            .search__input:focus{
                 border: 1px solid var(--hover-color);
                 outline: none;
             }
-            :host .search__input:focus ~ .search__label{
+            .search__input:focus ~ .search__label{
                 left: 290px;
                 color: var(--font-color);
             }
-            :host .search__input:not(:placeholder-shown) ~ .search__label{
+            .search__input:not(:placeholder-shown) ~ .search__label{
                 left: 290px;
                 color: var(--font-color);
                 cursor: pointer;
             }
-            :host .search__label:hover{
+            .search__label:hover{
                 color: var(--hover-color) !important;
+            }
+
+            @media only screen and (max-width: 725px){
+                .search__input{
+                    width: 100%;
+                }
+                .search__input:focus ~ .search__label{
+                    left: 0;
+                    bottom: 65px;
+                }
+                .search__input:not(:placeholder-shown) ~ .search__label{
+                    left: 0;
+                    bottom: 65px;
+                }
             }
         `
     }
 
     render(){
         return html`
-        <div class="search__container">
-            <input
-                id="search-input"
-                class="search__input"
-                placeholder=" "
-                type="text"
-                @keyup="${(event) => {
-                    console.log(event.target.value)
-                    this.handleKeyUp(event.target.value)
-                }}"
-            >
-            <label class="search__label" for="search-input">search</label>
-        </div>
+            <div class="search__container">
+                <input
+                    id="search-input"
+                    class="search__input"
+                    placeholder=" "
+                    type="text"
+                    @keyup="${(event) => {
+                        this.handleKeyUp(event.target.value)
+                    }}"
+                >
+                <label class="search__label" for="search-input">search</label>
+            </div>
         `
     }
 

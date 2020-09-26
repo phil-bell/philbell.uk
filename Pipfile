@@ -14,7 +14,7 @@ markdown = "*"
 django-filter = "*"
 linkedin_scraper = "*"
 black = "*"
-search-torrent = "*"
+we_get = {git = "https://github.com/rachmadaniHaryono/we-get"}
 
 [requires]
 python_version = "3.8"
