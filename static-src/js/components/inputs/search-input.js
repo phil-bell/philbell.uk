@@ -81,6 +81,11 @@ export class SearchInput extends LitElement{
         `
     }
 
+    constructor(){
+        super()
+        self.result = {}
+    }
+
     render(){
         return html`
             <div class="search__container">
@@ -99,7 +104,7 @@ export class SearchInput extends LitElement{
     }
 
     async handleKeyUp(value){
-        self.result = await fetch(window.location.href, {
+        self.results = await fetch(window.location.href, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -108,7 +113,8 @@ export class SearchInput extends LitElement{
             body: JSON.stringify({"term": value}),
         })
         .then(response => response.json())
-        console.log(self.result)
+        console.log(self.results)
+        document.querySelector("results-table").updateTable(self.results)
     }
 }
 
