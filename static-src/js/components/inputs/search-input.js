@@ -37,7 +37,7 @@ export class SearchInput extends LitElement{
                 border: 1px solid var(--font-color);
                 border-radius: 8px;
                 height: 35px;
-                width: 50%;
+                width: 500px;
                 text-align: center;
                 margin: auto;
                 transition: border-color 0.25s ease-in-out;
@@ -53,11 +53,11 @@ export class SearchInput extends LitElement{
                 outline: none;
             }
             :host .search__input:focus ~ .search__label{
-                left: 28%;
+                left: 290px;
                 color: var(--font-color);
             }
             :host .search__input:not(:placeholder-shown) ~ .search__label{
-                left: 28%;
+                left: 290px;
                 color: var(--font-color);
                 cursor: pointer;
             }
