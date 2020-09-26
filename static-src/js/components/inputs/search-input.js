@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element"
+import Cookies from 'js-cookie'
+
 
 export class SearchInput extends LitElement{
 
@@ -65,11 +67,6 @@ export class SearchInput extends LitElement{
         `
     }
 
-    constructor(){
-        super()
-        this.value = ""
-    }
-
     render(){
         return html`
         <div class="search__container">
@@ -78,13 +75,27 @@ export class SearchInput extends LitElement{
                 class="search__input"
                 placeholder=" "
                 type="text"
-                @model-value-changed="${(e) => {
-                    this.value=e.target.modelValue
+                @keyup="${(event) => {
+                    console.log(event.target.value)
+                    this.handleKeyUp(event.target.value)
                 }}"
             >
             <label class="search__label" for="search-input">search</label>
         </div>
         `
+    }
+
+    async handleKeyUp(value){
+        self.result = await fetch(window.location.href, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': Cookies.get("csrftoken")
+              },
+            body: JSON.stringify({"term": value}),
+        })
+        .then(response => response.json())
+        console.log(self.result)
     }
 }
 

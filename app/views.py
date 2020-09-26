@@ -1,3 +1,5 @@
+import json
+
 from django.views.generic import TemplateView, View
 from django.http import JsonResponse
 from django.urls import reverse
@@ -11,6 +13,10 @@ class HomePageView(TemplateView):
 
 class PlexView(TemplateView):
     template_name = "plex.html"
+
+    def post(self, request):
+        term = json.loads(request.body)["term"]
+        return JsonResponse({"term": term})
 
 
 class ResumeView(TemplateView):
@@ -33,3 +39,5 @@ class NavConfigView(TemplateView):
             ],
             safe=False,
         )
+
+
