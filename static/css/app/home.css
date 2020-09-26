@@ -9,6 +9,7 @@ body{
     background-color: var(--bg-color);
     color: var(--font-color);
     font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
     display: flex;
     font-weight: 500;
 }
@@ -40,5 +41,5 @@ p{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 30px 130px;
+    padding: 30px;
 }
