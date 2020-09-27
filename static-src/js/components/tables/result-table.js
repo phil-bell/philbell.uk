@@ -4,8 +4,24 @@ export class ResultsTable extends LitElement{
 
     static get styles(){
         return css`
-            table, th, td {
-                border: 1px solid var(--font-color);
+            :host{
+                display: flex;
+                justify-content: center;
+            }
+            table {
+                width: 50%;
+                border-collapse: collapse;
+            }
+            td{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                // max-width: 150px;
+                padding: 10px;
+                border-bottom: 1px solid var(--font-color);
+            }
+            tr:hover td{
+                color: var(--hover-color);
+                border-bottom: 1px solid var(--hover-color);
             }
         `
     }
@@ -43,10 +59,9 @@ export class ResultsTable extends LitElement{
                     ${this.rows.map((row) => {
                         return html`
                             <tr>
-                                <td>${row[0]}</td>
+                                <td>${row[0].replaceAll(".", " ")}</td>
                                 <td>${row[1].seeds}</td>
-                                <td>${row[1].target}</td>
-                                <td>${row[1].link}</td>
+                                <td><a data-magnet="${row[1].link}">download</a></td>
                             </tr>
                         `
                     })}

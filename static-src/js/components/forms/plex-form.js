@@ -4,7 +4,6 @@ import "../tables/result-table"
 
 export class PlexForm extends LitElement{
 
-
     static get styles() {
         return css`
             :host{

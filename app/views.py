@@ -19,7 +19,7 @@ class PlexView(TemplateView):
     def post(self, request):
         term = json.loads(request.body)["term"]
         we_get = WG()
-        we_get.parse_arguments(['--search', term, '--target', 'yts,1337x,eztv', "--json"])
+        we_get.parse_arguments(['--search', term, '--target', 'the_pirate_bay', "--json"])
         res = we_get.start(api_mode=True)
         return JsonResponse({"term": term, "rows": res})
 
