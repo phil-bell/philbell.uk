@@ -12,7 +12,7 @@ typer = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
-we_get = {git = "https://github.com/philhabell/we-get"}
+we_get = {git = "https://github.com/rachmadaniHaryono/we-get@dev"}
 
 [requires]
 python_version = "3.8"

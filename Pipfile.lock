@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "da48694af7d62a3122e9b63ad0f1158c05d13edcb1faafc333a950d98c4653fd"
+            "sha256": "31b944e0660e87222e84d00ccedfe016df52981028ded71dbbf2e484df6cf4e8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -66,11 +66,11 @@
         },
         "djangorestframework": {
             "hashes": [
-                "sha256:6dd02d5a4bd2516fb93f80360673bf540c3b6641fec8766b1da2870a5aa00b32",
-                "sha256:8b1ac62c581dbc5799b03e535854b92fc4053ecfe74bad3f9c05782063d4196b"
+                "sha256:5c5071fcbad6dce16f566d492015c829ddb0df42965d488b878594aabc3aed21",
+                "sha256:d54452aedebb4b650254ca092f9f4f5df947cb1de6ab245d817b08b4f4156249"
             ],
             "index": "pypi",
-            "version": "==3.11.1"
+            "version": "==3.12.1"
         },
         "docopt": {
             "hashes": [
@@ -160,8 +160,8 @@
             "version": "==0.2.5"
         },
         "we-get": {
-            "git": "https://github.com/philhabell/we-get",
-            "ref": "83c0334e0613e4403e7ffd40e5b7011deb4c7fce"
+            "git": "https://github.com/rachmadaniHaryono/we-get",
+            "ref": "7b2e3389c189e057be80b69951d4453a49d0a192"
         }
     },
     "develop": {}
