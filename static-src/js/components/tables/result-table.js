@@ -1,4 +1,6 @@
 import { LitElement, html, css } from "lit-element"
+import Cookies from 'js-cookie'
+
 
 export class ResultsTable extends LitElement{
 
@@ -61,13 +63,30 @@ export class ResultsTable extends LitElement{
                             <tr>
                                 <td>${row[0].replaceAll(".", " ")}</td>
                                 <td>${row[1].seeds}</td>
-                                <td><a data-magnet="${row[1].link}">download</a></td>
+                                <td><button @click=${this.handleDownload} data-name="${row[0]}" data-magnet="${row[1].link}">download</button></td>
                             </tr>
                         `
                     })}
                 </tbody>
             </table>
         `
+    }
+
+    async handleDownload(event){
+        console.log(event.target.dataset)
+        await fetch(`${window.location.origin}/api/download/`,{
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': Cookies.get("csrftoken")
+            },
+            body: JSON.stringify({
+                "name": event.target.dataset.name,
+                "magnet": event.target.dataset.magnet,
+                "location": "downloads/"
+            }),
+        })
+        .then(response => console.log(response))
     }
 }
 

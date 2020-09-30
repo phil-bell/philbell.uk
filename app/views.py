@@ -38,9 +38,9 @@ class NavConfigView(TemplateView):
     def get(self, request):
         return JsonResponse(
             [
-                {"name": "home", "url": reverse("home")},
-                {"name": "plex", "url": reverse("plex")},
-                {"name": "resume", "url": reverse("resume")},
+                {"name": "home", "url": reverse("app:home")},
+                {"name": "plex", "url": reverse("app:plex")},
+                {"name": "resume", "url": reverse("app:resume")},
             ],
             safe=False,
         )
