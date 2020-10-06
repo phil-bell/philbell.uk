@@ -7,4 +7,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'static/js'),
   },
+  node: {
+    fs: 'empty'
+  }
 };

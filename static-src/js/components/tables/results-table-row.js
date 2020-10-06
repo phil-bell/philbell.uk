@@ -4,6 +4,7 @@ import {
     css
 } from "lit-element";
 import Cookies from "js-cookie";
+import nameToImdb from "name-to-imdb"
 
 export class ResultsTableRow extends LitElement {
     static get styles(){
@@ -19,7 +20,6 @@ export class ResultsTableRow extends LitElement {
                 grid-template-columns: 1fr;
                 // border-bottom: 1px solid var(--font-color);
                 overflow: hidden;
-                height: 40px;
                 transition: 0.2s ease all;
                 -moz-transition: 0.2s ease all;
                 -webkit-transition: 0.2s ease all;
@@ -32,6 +32,7 @@ export class ResultsTableRow extends LitElement {
             }
             .grid__row__form{
                 display: grid;
+                justify-items: end;
                 grid-auto-flow: column;
                 grid-template-columns: 1fr;
                 height: 40px
@@ -43,6 +44,12 @@ export class ResultsTableRow extends LitElement {
             .grid__cell{
                 padding: 10px;
                 align-self: center;
+            }
+            .show-form{
+                height: 80px;
+            }
+            .hide-form{
+                height: 40px;
             }
             button{
                 color: var(--font-color);
@@ -70,7 +77,20 @@ export class ResultsTableRow extends LitElement {
                 background: var(--bg-color);
                 border: 1px solid var(--font-color);
                 border-radius: 5px;
-                width: 0;
+                width: auto;
+                height: 22px;
+                outline: none;
+            }
+            select{
+                color: var(--font-color);
+                background: var(--bg-color);
+                border: 1px solid var(--font-color);
+                border-radius: 5px;
+                height: 25px;
+                font-family: var(--font-family);
+                -webkit-font-smoothing: antialiased;
+                font-weight: 500;
+                outline: none;
             }
         `
     }
@@ -82,6 +102,7 @@ export class ResultsTableRow extends LitElement {
         this.magnet = ""
         this.location = ""
         this.open = false
+        this.type = ""
     }
 
     static get properties() {
@@ -97,32 +118,38 @@ export class ResultsTableRow extends LitElement {
             magnet: {
                 type: String,
                 attribute: "magnet"
+            },
+            type: {
+                type: String,
+            },
+            open: {
+                type: Boolean
             }
         };
     }
 
     render() {
         return html`
-            <div class="grid__row">
+            <div class="grid__row ${this.open ? "show-form" : "hide-form"}">
                 <div class="grid__row__info">
                     <div class="grid__cell">${this.fileName}</div>
                     <div class="grid__cell">${this.seeds}</div>
                     <div class="grid__cell">
-                        <button data-open=${false} @click=${this.toggleForm}>
-                            download
+                        <button @click=${e => this.open = !this.open}>
+                            ${this.open ? "close" : "download"}
                         </button>
                     </div>
                 </div>
                 <div class="grid__row__form">
                     <div class="grid__cell">
-                        <select>
+                        <select  @change=${e => this.type = e.target.value}>
                             <option>--</option>
                             <option value="movie">Movie</option>
                             <option value="tv">TV</option>
                             <option value="audiobook">Audiobook</option>
                         </select>
                     </div>
-                    <div class="grid__cell"><input /></div>
+                    <div class="grid__cell" .hidden=${this.type !== "tv"}><input /></div>
                     <div class="grid__cell">
                         <button @click=${this.handleDownload}>
                             download
@@ -133,21 +160,7 @@ export class ResultsTableRow extends LitElement {
         `;
     }
 
-    toggleForm(event) {
-        if (this.open) {
-            this.open = false
-            this.firstElementChild = "40px"
-            event.target.innerText = "download"
-        } else {
-            this.open = true
-            this.formRow = event.target
-            this.firstElementChild = "80px"
-            event.target.innerText = "close"
-        }
-    }
-
     async handleDownload(event) {
-        console.log(event.target.dataset)
         await fetch(`${window.location.origin}/api/download/`, {
             method: 'POST',
             headers: {

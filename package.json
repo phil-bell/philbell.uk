@@ -8,7 +8,9 @@
   "devDependencies": {
     "js-cookie": "^2.2.1",
     "lit-element": "^2.4.0",
+    "name-to-imdb": "^3.0.1",
     "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "xml2js": "^0.4.23"
   }
 }
