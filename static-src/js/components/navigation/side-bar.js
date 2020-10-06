@@ -21,7 +21,7 @@ export class SideBar extends LitElement {
         user-select: none;
       }
 
-      .menu__toggle input:hover ~ span{
+      .menu__toggle input:hover ~ span {
         background: var(--hover-color);
       }
 
@@ -59,7 +59,7 @@ export class SideBar extends LitElement {
         z-index: 1;
         transform-origin: 4px 0px;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
-        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+          background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
       }
 
       .menu__toggle input:hover > span {
@@ -113,15 +113,16 @@ export class SideBar extends LitElement {
     `;
   }
 
-  constructor(){
-    super()
-    this.navConfig = []
+  constructor() {
+    super();
+    this.navConfig = [];
   }
 
-  async connectedCallback(){
-    this.navConfig = await fetch(`${window.location.origin}/get-nav-config`)
-      .then(response => response.json())
-    super.connectedCallback()
+  async connectedCallback() {
+    this.navConfig = await fetch(
+      `${window.location.origin}/get-nav-config`
+    ).then((response) => response.json());
+    super.connectedCallback();
   }
 
   render() {
@@ -133,7 +134,9 @@ export class SideBar extends LitElement {
           <span></span>
           <span></span>
           <ul class="menu__list">
-            ${this.navConfig.map((item) => html`<a href="${item.url}"><li>${item.name}</li></a>`)}
+            ${this.navConfig.map(
+              (item) => html`<a href="${item.url}"><li>${item.name}</li></a>`
+            )}
           </ul>
         </div>
       </nav>
