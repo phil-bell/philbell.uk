@@ -1,5 +1,3 @@
-
-
 from api.models import Download
 from rest_framework import serializers
 
@@ -11,8 +9,4 @@ class DownloadSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Download
-        fields = [
-            "name",
-            "location",
-            "magnet"
-        ]
+        fields = ["name", "location", "magnet"]

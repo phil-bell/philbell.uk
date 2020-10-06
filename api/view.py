@@ -26,12 +26,6 @@ class DownloadViewSet(
         print(request.data["location"])
         print(request.data["magnet"])
         run(
-            [
-                "transmission-remote",
-                "-w",
-                request.data["location"],
-                "-a",
-                request.data["magnet"],
-            ]
+            ["transmission-remote", "-w", request.data["location"], "-a", request.data["magnet"],]
         )
         return super().create(request, *args, **kwargs)
