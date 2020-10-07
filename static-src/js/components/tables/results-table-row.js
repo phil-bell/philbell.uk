@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit-element";
 import Cookies from "js-cookie";
-import nameToImdb from "name-to-imdb";
 
 export class ResultsTableRow extends LitElement {
   static get styles() {
@@ -93,12 +92,13 @@ export class ResultsTableRow extends LitElement {
 
   constructor() {
     super();
-    this.fileName = "";
+    this._fileName = "";
     this.seeds = "";
     this.magnet = "";
     this.location = "";
     this.open = false;
     this.type = "";
+    this.autoType = "";
   }
 
   static get properties() {
@@ -118,10 +118,25 @@ export class ResultsTableRow extends LitElement {
       type: {
         type: String,
       },
+      autoType: {
+        type: String,
+      },
       open: {
         type: Boolean,
       },
     };
+  }
+
+  set fileName(value) {
+    this._fileName = value.replaceAll(".", " ");
+  }
+
+  get fileName() {
+    return this._fileName;
+  }
+
+  get strippedFileName() {
+    return this.fileName.match(/[^\(,\[,\-,:)]*/i)[0];
   }
 
   render() {
@@ -131,7 +146,7 @@ export class ResultsTableRow extends LitElement {
           <div class="grid__cell">${this.fileName}</div>
           <div class="grid__cell">${this.seeds}</div>
           <div class="grid__cell">
-            <button @click=${(e) => (this.open = !this.open)}>
+            <button @click=${this.toggleRow}>
               ${this.open ? "close" : "download"}
             </button>
           </div>
@@ -140,18 +155,36 @@ export class ResultsTableRow extends LitElement {
           <div class="grid__cell">
             <select @change=${(e) => (this.type = e.target.value)}>
               <option>--</option>
-              <option value="movie">Movie</option>
-              <option value="tv">TV</option>
+              <option ?selected=${this.autoType == "movie"} value="movie">
+                Movie
+              </option>
+              <option ?selected=${this.autoType == "series"} value="tv">
+                TV
+              </option>
               <option value="audiobook">Audiobook</option>
             </select>
           </div>
-          <div class="grid__cell" .hidden=${this.type !== "tv"}><input /></div>
+          <div
+            class="grid__cell"
+            .hidden=${this.type !== "tv" && this.autoType !== "series"}
+          >
+            <input value=${this.strippedFileName} />
+          </div>
           <div class="grid__cell">
             <button @click=${this.handleDownload}>download</button>
           </div>
         </div>
       </div>
     `;
+  }
+
+  async toggleRow(event) {
+    this.open = !this.open;
+    await fetch(
+      `http://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
+    )
+      .then((response) => response.json())
+      .then((data) => (this.autoType = data.Search[0].Type));
   }
 
   async handleDownload(event) {

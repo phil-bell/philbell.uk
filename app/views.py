@@ -5,8 +5,11 @@ from django.http import JsonResponse
 from django.urls import reverse
 
 from we_get.core.we_get import WG
+from imdb import IMDb
 
 from .models import Experience, Education
+
+ia = IMDb()
 
 
 class HomePageView(TemplateView):

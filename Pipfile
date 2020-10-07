@@ -13,6 +13,7 @@ djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 we_get = {git = "https://github.com/rachmadaniHaryono/we-get@dev"}
+imdbpy = "*"
 
 [requires]
 python_version = "3.8"
