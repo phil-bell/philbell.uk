@@ -49,7 +49,7 @@ export class ResultsTable extends LitElement {
             <results-table-row
               file-name=${row[0]}
               seeds=${row[1].seeds}
-              magent=${row[1].magnet}
+              magnet=${row[1].link}
             ></results-table-row>
           `;
         })}

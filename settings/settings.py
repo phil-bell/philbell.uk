@@ -118,3 +118,5 @@ STATIC_ROOT = f"{BASE_DIR}/staticfiles/"
 ROOT_URLCONF = "urls.urls"
 
 DEBUG = True
+
+DOWNLOAD_PATH = "/Users/philipbell/Downloads/"

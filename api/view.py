@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.http import request
 from django.views import generic
 from rest_framework import mixins
@@ -26,11 +27,9 @@ class DownloadViewSet(
     serializer_class = DownloadSerializer
 
     def create(self, request, *args, **kwargs):
-        print(request.data["location"])
-        print(request.data["magnet"])
-        run(
-            ["transmission-remote", "-w", request.data["location"], "-a", request.data["magnet"],]
-        )
+        cmd = f"transmission-remote -w \"{settings.DOWNLOAD_PATH}\" -a {request.data['magnet']}"
+        print(cmd)
+        run(cmd.split() )
         return super().create(request, *args, **kwargs)
 
 

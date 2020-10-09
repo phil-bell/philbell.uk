@@ -93,12 +93,10 @@ export class ResultsTableRow extends LitElement {
   constructor() {
     super();
     this._fileName = "";
+    this._type = "";
     this.seeds = "";
     this.magnet = "";
-    this.location = "";
     this.open = false;
-    this.type = "";
-    this.autoType = "";
   }
 
   static get properties() {
@@ -116,6 +114,9 @@ export class ResultsTableRow extends LitElement {
         attribute: "magnet",
       },
       type: {
+        type: String,
+      },
+      _type: {
         type: String,
       },
       autoType: {
@@ -136,7 +137,28 @@ export class ResultsTableRow extends LitElement {
   }
 
   get strippedFileName() {
-    return this.fileName.match(/[^\(,\[,\-,:)]*/i)[0];
+    return this.fileName.match(/[^\(,\[,\-,:)]*/i)[0].trim();
+  }
+
+  get location() {
+    if (this.type == "tv") {
+      return `${this.type}/${this.strippedFileName}/`;
+    }
+    return `${this.type}/`;
+  }
+
+  set type(value) {
+    if (value == "movie") {
+      this._type = "movies";
+    } else if (value == "series") {
+      this._type = "tv";
+    } else {
+      this._type = value;
+    }
+  }
+
+  get type() {
+    return this._type;
   }
 
   render() {
@@ -155,19 +177,14 @@ export class ResultsTableRow extends LitElement {
           <div class="grid__cell">
             <select @change=${(e) => (this.type = e.target.value)}>
               <option>--</option>
-              <option ?selected=${this.autoType == "movie"} value="movie">
+              <option ?selected=${this.type == "movies"} value="movie">
                 Movie
               </option>
-              <option ?selected=${this.autoType == "series"} value="tv">
-                TV
-              </option>
+              <option ?selected=${this.type == "tv"} value="tv">TV</option>
               <option value="audiobook">Audiobook</option>
             </select>
           </div>
-          <div
-            class="grid__cell"
-            .hidden=${this.type !== "tv" && this.autoType !== "series"}
-          >
+          <div class="grid__cell" .hidden=${this.type !== "tv"}>
             <input value=${this.strippedFileName} />
           </div>
           <div class="grid__cell">
@@ -184,10 +201,15 @@ export class ResultsTableRow extends LitElement {
       `http://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
     )
       .then((response) => response.json())
-      .then((data) => (this.autoType = data.Search[0].Type));
+      .then((data) => {
+        this.type = data.Search[0].Type
+      });
   }
 
   async handleDownload(event) {
+    console.log(this.strippedFileName);
+    console.log(this.magnet);
+    console.log(this.location);
     await fetch(`${window.location.origin}/api/download/`, {
       method: "POST",
       headers: {
