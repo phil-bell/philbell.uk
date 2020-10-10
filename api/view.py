@@ -35,7 +35,7 @@ class DownloadViewSet(
         print("adding torrent")
         self.client.torrents_add(
             urls=request.data["magnet"],
-            save_path=f"{settings.DOWNLOAD_PATH}{request.data['locations']}",
+            save_path=f"{settings.DOWNLOAD_PATH}{request.data['location']}",
         )
         return super().create(request, *args, **kwargs)
 
