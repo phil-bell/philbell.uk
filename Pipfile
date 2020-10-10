@@ -16,6 +16,7 @@ we_get = {git = "https://github.com/rachmadaniHaryono/we-get@dev"}
 imdbpy = "*"
 django-fake-database-backends = "*"
 qbittorrent-api = "*"
+black = "*"
 
 [requires]
 python_version = "3.8"

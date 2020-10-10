@@ -26,12 +26,17 @@ class DownloadViewSet(
     serializer_class = DownloadSerializer
 
     def __init__(self, *args, **kwargs):
-        self.client = qbittorrentapi.Client(host='localhost', port=8080, username='admin', password='adminadmin')
+        self.client = qbittorrentapi.Client(
+            host="localhost", port=8080, username="admin", password="adminadmin"
+        )
         super().__init__(*args, **kwargs)
 
     def create(self, request, *args, **kwargs):
         print("adding torrent")
-        self.client.torrents_add(urls=request.data["magnet"], save_path=f"{settings.DOWNLOAD_PATH}{request.data["locations"]}")
+        self.client.torrents_add(
+            urls=request.data["magnet"],
+            save_path=f"{settings.DOWNLOAD_PATH}{request.data['locations']}",
+        )
         return super().create(request, *args, **kwargs)
 
 
@@ -39,7 +44,6 @@ class InfoDetail(APIView):
     def __init__(self, *args, **kwargs):
         self.imdb = IMDb()
         super().__init__(*args, **kwargs)
-
 
     def post(self, request, format=None):
         res = self.imdb.search_movie(request.data["name"].split("(")[0])

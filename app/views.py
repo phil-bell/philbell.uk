@@ -9,8 +9,6 @@ from imdb import IMDb
 
 from .models import Experience, Education
 
-ia = IMDb()
-
 
 class HomePageView(TemplateView):
     template_name = "home.html"
