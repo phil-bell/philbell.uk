@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element";
-import Cookies from "js-cookie";
 
 export class SearchInput extends LitElement {
   static get styles() {
@@ -100,15 +99,16 @@ export class SearchInput extends LitElement {
   }
 
   async handleKeyUp(value) {
-    this.results = await fetch(window.location.href, {
+    await fetch(window.location.href, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get("csrftoken"),
       },
       body: JSON.stringify({ term: value }),
-    }).then((response) => response.json());
-    document.querySelector("results-table").updateTable(this.results);
+    })
+    .then((response) => response.json())
+    .then((data) => document.querySelector("results-table").updateTable(data))
+    ;
   }
 }
 

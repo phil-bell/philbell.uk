@@ -7,13 +7,15 @@ verify_ssl = true
 
 [packages]
 django = "*"
-psycopg2 = "*"
+psycopg2-binary = "*"
 typer = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 we_get = {git = "https://github.com/rachmadaniHaryono/we-get@dev"}
 imdbpy = "*"
+django-fake-database-backends = "*"
+qbittorrent-api = "*"
 
 [requires]
 python_version = "3.8"

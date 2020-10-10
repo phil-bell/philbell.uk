@@ -12,8 +12,7 @@ from rest_framework.response import Response
 from .models import Download
 from subprocess import run
 from imdb import IMDb
-
-ia = IMDb()
+import qbittorrentapi
 
 
 class DownloadViewSet(
@@ -26,16 +25,24 @@ class DownloadViewSet(
     queryset = Download.objects.all()
     serializer_class = DownloadSerializer
 
+    def __init__(self, *args, **kwargs):
+        self.client = qbittorrentapi.Client(host='localhost', port=8080, username='admin', password='adminadmin')
+        super().__init__(*args, **kwargs)
+
     def create(self, request, *args, **kwargs):
-        cmd = f"transmission-remote -w \"{settings.DOWNLOAD_PATH}\" -a {request.data['magnet']}"
-        print(cmd)
-        run(cmd.split() )
+        print("adding torrent")
+        self.client.torrents_add(urls=request.data["magnet"], save_path=f"{settings.DOWNLOAD_PATH}{request.data["locations"]}")
         return super().create(request, *args, **kwargs)
 
 
 class InfoDetail(APIView):
+    def __init__(self, *args, **kwargs):
+        self.imdb = IMDb()
+        super().__init__(*args, **kwargs)
+
+
     def post(self, request, format=None):
-        res = ia.search_movie(request.data["name"].split("(")[0])
+        res = self.imdb.search_movie(request.data["name"].split("(")[0])
         print(res[0]["title"])
         print(res[0])
         return JsonResponse({"res": "pass"})

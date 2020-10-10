@@ -11,18 +11,20 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+from sys import platform
+from .local import *
+if platform.startswith("linux"):
+    from .linux import *
+elif platform.startswith("darwin"):
+    from .mac import *
+elif platform.startswith("win32"):
+    from .win import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "eka^%a4nv2+5p6*gz#rg*xun-p8$e(kn=fi@2%*aow(ow4px@0"
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -45,7 +47,6 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -69,19 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "philipbell",
-        "USER": "philipbell",
-        "HOST": "localhost",
-        "PORT": "5432",
-    }
-}
 
 # Password validation2.8.5
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -119,4 +107,6 @@ ROOT_URLCONF = "urls.urls"
 
 DEBUG = True
 
-DOWNLOAD_PATH = "/Users/philipbell/Downloads/"
+DOWNLOAD_PATH = f"{BASE_DIR}/Downloads/"
+
+CSRF_COOKIE_SECURE = False
