@@ -12,13 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from sys import platform
-from .local import *
-if platform.startswith("linux"):
-    from .linux import *
-elif platform.startswith("darwin"):
-    from .mac import *
-elif platform.startswith("win32"):
-    from .win import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -110,3 +103,12 @@ DEBUG = True
 DOWNLOAD_PATH = f"{BASE_DIR}/Downloads/"
 
 CSRF_COOKIE_SECURE = False
+
+
+if platform.startswith("linux"):
+    from .linux import *
+elif platform.startswith("darwin"):
+    from .mac import *
+elif platform.startswith("win32"):
+    from .win import *
+from .local import *
