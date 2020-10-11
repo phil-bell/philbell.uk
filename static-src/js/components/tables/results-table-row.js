@@ -162,7 +162,7 @@ export class ResultsTableRow extends LitElement {
 
   render() {
     return html`
-      <div class="grid__row ${this.open ? "show-form" : "hide-form"}">
+      <div class="grid__row ${this.open ? " show-form" : "hide-form" }">
         <div class="grid__row__info">
           <div class="grid__cell">${this.fileName}</div>
           <div class="grid__cell">${this.seeds}</div>
@@ -174,16 +174,16 @@ export class ResultsTableRow extends LitElement {
         </div>
         <div class="grid__row__form">
           <div class="grid__cell">
-            <select @change=${(e) => (this.type = e.target.value)}>
+            <select @change=${(e)=> (this.type = e.target.value)}>
               <option>--</option>
-              <option ?selected=${this.type == "movies"} value="movie">
+              <option ?selected=${this.type=="movies" } value="movie">
                 Movie
               </option>
-              <option ?selected=${this.type == "tv"} value="tv">TV</option>
+              <option ?selected=${this.type=="tv" } value="tv">TV</option>
               <option value="audiobook">Audiobook</option>
             </select>
           </div>
-          <div class="grid__cell" .hidden=${this.type !== "tv"}>
+          <div class="grid__cell" .hidden=${this.type !=="tv" }>
             <input value=${this.strippedFileName} />
           </div>
           <div class="grid__cell">
@@ -219,7 +219,13 @@ export class ResultsTableRow extends LitElement {
         magnet: this.magnet,
         location: this.location,
       }),
-    }).then((response) => console.log(response));
+    })
+    .then(data => {
+      document.querySelector("toast-card").show("Your file is being downloaded")
+    })
+    .catch((error) => {
+      document.querySelector("toast-card").show("There has been a problem downloading your file")
+    });
   }
 }
 

@@ -108,7 +108,7 @@ ROOT_URLCONF = "urls.urls"
 
 DEBUG = True
 
-DOWNLOAD_PATH = f"{BASE_DIR}/Downloads/"
+DOWNLOAD_PATH = f"/mnt/hdd/"
 
 CSRF_COOKIE_SECURE = False
 

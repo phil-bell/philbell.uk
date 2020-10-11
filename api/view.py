@@ -3,27 +3,17 @@ from django.http import request
 from django.views import generic
 from rest_framework import mixins
 from rest_framework.views import APIView
-from api.serializer import DownloadSerializer
 from django.contrib.auth.models import User, Group
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponse
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
-from .models import Download
 from subprocess import run
 from imdb import IMDb
 import qbittorrentapi
 
 
-class DownloadViewSet(
-    viewsets.ViewSet,
-    mixins.RetrieveModelMixin,
-    mixins.CreateModelMixin,
-    mixins.ListModelMixin,
-    viewsets.GenericViewSet,
-):
-    queryset = Download.objects.all()
-    serializer_class = DownloadSerializer
+class Download(APIView):
 
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
@@ -31,16 +21,18 @@ class DownloadViewSet(
         )
         super().__init__(*args, **kwargs)
 
-    def create(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         print("adding torrent")
-        self.client.torrents_add(
+        res = self.client.torrents_add(
             urls=request.data["magnet"],
             save_path=f"{settings.DOWNLOAD_PATH}{request.data['location']}",
         )
-        return super().create(request, *args, **kwargs)
+        if res == "Ok.":
+            return HttpResponse(status=201)
+        return HttpResponse(status=400)
 
 
-class InfoDetail(APIView):
+class Info(APIView):
     def __init__(self, *args, **kwargs):
         self.imdb = IMDb()
         super().__init__(*args, **kwargs)
