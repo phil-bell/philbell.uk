@@ -12,6 +12,7 @@ body {
   -webkit-font-smoothing: antialiased;
   display: flex;
   font-weight: 500;
+  overflow: hidden;
 }
 
 h1 {

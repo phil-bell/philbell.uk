@@ -136,7 +136,7 @@ export class ResultsTableRow extends LitElement {
   }
 
   get strippedFileName() {
-    return this.fileName.match(/[^\(,\[,\-,:)]*/i)[0].trim();
+    return this.fileName.match(/[^\(,\[,\-,:]*/i)[0].split("S0")[0].trim();
   }
 
   get location() {
@@ -196,6 +196,7 @@ export class ResultsTableRow extends LitElement {
 
   async toggleRow(event) {
     this.open = !this.open;
+    console.log(this.strippedFileName)
     await fetch(
       `http://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
     )
@@ -206,9 +207,6 @@ export class ResultsTableRow extends LitElement {
   }
 
   async handleDownload(event) {
-    console.log(this.strippedFileName);
-    console.log(this.magnet);
-    console.log(this.location);
     await fetch(`${window.location.origin}/api/download/`, {
       method: "POST",
       headers: {
