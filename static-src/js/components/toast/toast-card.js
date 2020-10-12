@@ -5,12 +5,16 @@ export class ToastCard extends LitElement {
     static get styles() {
         return css`
             div{
+                max-width: 230px;
                 position: absolute;
                 padding: 10px;
+                right: var(--right, -250px);
                 bottom: 10px;
-                right: 10px;
                 border: 1px solid;
                 border-radius: 5px;
+                transition: 0.5s ease all;
+                -moz-transition: 0.5s ease all;
+                -webkit-transition: 0.5s ease all;
             }
         `
     }
@@ -27,20 +31,24 @@ export class ToastCard extends LitElement {
         super();
         this.message = ""
         this.type = ""
-        this.hide = true
+        this.showRight = "10px"
+        this.hideRight = "-250px"
     }
 
     show(message = false) {
         if (message) {
             this.message = message
         }
-        this.hide = !this.hide
-        window.setTimeout(() => this.hide = !this.hide, 2000)
+        this.style.setProperty("--right", this.showRight)
+    }
+
+    hide(){
+        this.style.setProperty("--right", this.hideRight)
     }
 
     render() {
         return html`
-            <div .hidden=${this.hide}>
+            <div @click=${this.hide}>
                 ${this.message}
             </div>
         `

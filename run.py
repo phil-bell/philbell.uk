@@ -6,7 +6,7 @@ app = typer.Typer()
 
 def start():
     run(
-        "nohup qbittorrent-nox & python manage.py runserver & ./node_modules/.bin/webpack --watch",
+        "sudo service postgresql start && nohup qbittorrent-nox & python manage.py runserver & ./node_modules/.bin/webpack --watch",
         shell=True,
     )
 
