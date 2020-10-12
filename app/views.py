@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.urls import reverse
 
 from we_get.core.we_get import WG
+from imdb import IMDb
 
 from .models import Experience, Education
 
@@ -19,7 +20,7 @@ class PlexView(TemplateView):
     def post(self, request):
         term = json.loads(request.body)["term"]
         we_get = WG()
-        we_get.parse_arguments(['--search', term, '--target', 'the_pirate_bay', "--json"])
+        we_get.parse_arguments(["--search", term, "--target", "the_pirate_bay", "--json"])
         res = we_get.start(api_mode=True)
         return JsonResponse({"term": term, "rows": res})
 
@@ -38,11 +39,9 @@ class NavConfigView(TemplateView):
     def get(self, request):
         return JsonResponse(
             [
-                {"name": "home", "url": reverse("home")},
-                {"name": "plex", "url": reverse("plex")},
-                {"name": "resume", "url": reverse("resume")},
+                {"name": "home", "url": reverse("app:home")},
+                {"name": "plex", "url": reverse("app:plex")},
+                {"name": "resume", "url": reverse("app:resume")},
             ],
             safe=False,
         )
-
-

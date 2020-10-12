@@ -5,7 +5,10 @@ app = typer.Typer()
 
 
 def start():
-    run("python manage.py runserver & webpack --watch", shell=True)
+    run(
+        "nohup qbittorrent-nox & python manage.py runserver & ./node_modules/.bin/webpack --watch",
+        shell=True,
+    )
 
 
 if __name__ == "__main__":

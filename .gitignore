@@ -24,3 +24,7 @@ depreciated
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+settings/local.py
+
+nohup.out

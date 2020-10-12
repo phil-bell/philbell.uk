@@ -1,45 +1,45 @@
-:root{
-    --bg-color: black;
-    --font-color: white;
-    --hover-color: #fcba03;
-    --font-family: 'Kumbh Sans', sans-serif;
+:root {
+  --bg-color: black;
+  --font-color: white;
+  --hover-color: #fcba03;
+  --font-family: "Kumbh Sans", sans-serif;
 }
 
-body{
-    background-color: var(--bg-color);
-    color: var(--font-color);
-    font-family: var(--font-family);
-    -webkit-font-smoothing: antialiased;
-    display: flex;
-    font-weight: 500;
+body {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  font-weight: 500;
 }
 
-h1{
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 22px;
+h1 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 22px;
 }
-h2{
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 24px;
+h2 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 24px;
 }
-h3{
-    font-family: var(--font-family);
-    font-weight: 500;
-    font-size: 20px;
+h3 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
 }
-p{
-    font-family: var(--font-family);
-    font-weight: 500;
-    line-height: 18px;
-    font-size: 16px;
+p {
+  font-family: var(--font-family);
+  font-weight: 500;
+  line-height: 18px;
+  font-size: 16px;
 }
 
-.content--center{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 30px;
+.content--center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px;
 }
