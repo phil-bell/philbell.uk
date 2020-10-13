@@ -37,7 +37,6 @@ class ResumeView(TemplateView):
 
 class NavConfigView(TemplateView):
     def get(self, request):
-        print(request.user.is_authenticated)
         return JsonResponse({
             "nav": [
                 {"name": "home", "url": reverse("app:home")},
