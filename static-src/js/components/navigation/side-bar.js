@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import "../forms/login-form"
 
 export class SideBar extends LitElement {
   static get styles() {
@@ -91,6 +92,7 @@ export class SideBar extends LitElement {
       .menu__list {
         position: absolute;
         width: auto;
+        height: 85vh;
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
@@ -137,6 +139,7 @@ export class SideBar extends LitElement {
             ${this.navConfig.map(
               (item) => html`<a href="${item.url}"><li>${item.name}</li></a>`
             )}
+            <login-form></login-form>
           </ul>
         </div>
       </nav>
