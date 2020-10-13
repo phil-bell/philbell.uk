@@ -4,7 +4,9 @@ import Cookies from "js-cookie"
 export class LoginForm extends LitElement {
   static get styles() {
     return css`
-
+      [hidden]{
+        display: none;
+      }
     `;
   }
 
@@ -12,12 +14,14 @@ export class LoginForm extends LitElement {
       super()
       this.username = ""
       this.password = ""
+      this.authenticated = false
   }
 
   static get properties(){
     return{
         username: String,
-        password: String
+        password: String,
+        authenticated: Boolean
     }  
 
   }
@@ -35,16 +39,24 @@ export class LoginForm extends LitElement {
             password: this.password
           }),
     })
-    .then((response) => response.json())
-    .catch((error) => console.log(error))
+    .then((response) => response.status === 200 ? this.authenticated = true : this.authenticated = false)
   }
+
+  async logout(){
+    await fetch(`${window.location.origin}/api/logout`)
+    .then(this.authenticated = false)
+  }
+
 
   render() {
     return html`
-      <div class="login-form__container">
+      <div class="login-form__container" .hidden=${this.authenticated}>
         <input @change=${(e) => this.username = e.target.value}>
         <input @change=${(e) => this.password = e.target.value}>
         <button @click=${this.login}>login</button>
+      </div>
+      <div class="logout-form__countainer" .hidden=${!this.authenticated}>
+        <button @click=${this.logout}>logout</button>
       </div>
     `;
   }

@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from subprocess import run
 from imdb import IMDb
 import qbittorrentapi
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, logout
 
 
 class Download(APIView):
@@ -53,3 +53,8 @@ class Login(APIView):
         if user:
            return HttpResponse(status=200) 
         return HttpResponse(status=401)
+
+class Logout(APIView):
+    def get(self, request):
+        logout(request)
+        return HttpResponse(status=200)
