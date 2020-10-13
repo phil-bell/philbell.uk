@@ -43,7 +43,7 @@ class NavConfigView(TemplateView):
                 {"name": "plex", "url": reverse("app:plex")},
                 {"name": "resume", "url": reverse("app:resume")},
             ],
-            "authenticated": request.user.is_authenticated
+            "authenticated": request.user.is_authenticated # TODO make a dedicated authenticate api endpoint
         },
         safe=False,
         )
