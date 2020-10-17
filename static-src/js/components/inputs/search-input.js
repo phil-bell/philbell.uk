@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import Cookies from "js-cookie"
 
 export class SearchInput extends LitElement {
   static get styles() {
@@ -103,6 +104,7 @@ export class SearchInput extends LitElement {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get('csrftoken')
       },
       body: JSON.stringify({ term: value }),
     })

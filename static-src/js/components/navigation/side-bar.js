@@ -1,4 +1,5 @@
 import { LitElement, html, css } from "lit-element";
+import "../forms/login-form"
 
 export class SideBar extends LitElement {
   static get styles() {
@@ -89,8 +90,12 @@ export class SideBar extends LitElement {
       }
 
       .menu__list {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
         position: absolute;
         width: auto;
+        height: 85vh;
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
@@ -107,7 +112,7 @@ export class SideBar extends LitElement {
         font-size: 22px;
       }
 
-      .menu__toggle input:checked ~ ul {
+      .menu__toggle input:checked ~ div {
         transform: none;
       }
     `;
@@ -116,13 +121,32 @@ export class SideBar extends LitElement {
   constructor() {
     super();
     this.navConfig = [];
+    this.addEventListener("reload-nav", () => {
+      console.log("event called")
+      this.reload()
+    })
+  }
+
+  static get properties(){
+    return {
+      navConfig: Array
+    }
   }
 
   async connectedCallback() {
-    this.navConfig = await fetch(
+    this.navConfig =  await fetch(
       `${window.location.origin}/get-nav-config`
     ).then((response) => response.json());
     super.connectedCallback();
+  }
+
+  async reload(){
+    console.log(this.navConfig)
+    this.navConfig =  await fetch(
+      `${window.location.origin}/get-nav-config`
+    ).then((response) => this.navConfig = response.json());
+    console.log(this.navConfig)
+    console.log("reload")
   }
 
   render() {
@@ -133,11 +157,17 @@ export class SideBar extends LitElement {
           <span></span>
           <span></span>
           <span></span>
-          <ul class="menu__list">
-            ${this.navConfig.map(
-              (item) => html`<a href="${item.url}"><li>${item.name}</li></a>`
+          <div class="menu__list">
+            ${this.navConfig.nav.map(
+              (item) => {
+                console.log()
+                if (item.show){
+                  return html`<a href="${item.url}"><li>${item.name}</li></a>`
+                }
+              }
             )}
-          </ul>
+            <login-form .authenticated=${this.navConfig.authenticated}></login-form>
+          </div>
         </div>
       </nav>
     `;

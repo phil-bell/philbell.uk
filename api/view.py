@@ -11,10 +11,10 @@ from rest_framework.response import Response
 from subprocess import run
 from imdb import IMDb
 import qbittorrentapi
+from django.contrib.auth import authenticate, logout, login
 
 
 class Download(APIView):
-
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
             host="localhost", port=8080, username="admin", password="adminadmin"
@@ -40,6 +40,25 @@ class Info(APIView):
 
     def post(self, request, format=None):
         res = self.imdb.search_movie(request.data["name"].split("(")[0])
-        print(res[0]["title"])
-        print(res[0])
+
         return JsonResponse({"res": "pass"})
+
+
+class Login(APIView):
+    def post(self, request):
+        user = authenticate(username=request.data["username"], password=request.data["password"])
+        if user:
+            login(request, user)
+            return HttpResponse(status=200)
+        return HttpResponse(status=401)
+
+
+class Logout(APIView):
+    def get(self, request):
+        logout(request)
+        return HttpResponse(status=200)
+
+
+class Authenticated(APIView):
+    def get(self, request):
+        return JsonResponse({"authenticated": request.user.is_authenticated})
