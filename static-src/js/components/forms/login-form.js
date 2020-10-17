@@ -103,6 +103,8 @@ export class LoginForm extends LitElement {
         composed: true,
       })
     ))
+    window.location.reload()
+    
   }
 
   async logout(){

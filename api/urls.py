@@ -1,6 +1,6 @@
 from django.urls import include, path
 from rest_framework import routers
-from .view import Download, Info, Login, Logout
+from .view import Download, Info, Login, Logout, Authenticated
 
 
 app_name = "api"
@@ -13,4 +13,5 @@ urlpatterns = [
     path("download/", Download.as_view()),
     path("login/", Login.as_view()),
     path("logout/", Logout.as_view()),
+    path("authenticated/", Authenticated.as_view()),
 ]

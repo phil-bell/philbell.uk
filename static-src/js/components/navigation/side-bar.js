@@ -159,7 +159,12 @@ export class SideBar extends LitElement {
           <span></span>
           <div class="menu__list">
             ${this.navConfig.nav.map(
-              (item) => html`<a href="${item.url}"><li>${item.name}</li></a>`
+              (item) => {
+                console.log()
+                if (item.show){
+                  return html`<a href="${item.url}"><li>${item.name}</li></a>`
+                }
+              }
             )}
             <login-form .authenticated=${this.navConfig.authenticated}></login-form>
           </div>

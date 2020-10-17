@@ -50,10 +50,8 @@ class NavConfigView(TemplateView):
         return JsonResponse(
             {
                 "nav": [
-                    {"name": "home", "url": reverse("app:home")},
-                    {"name": "resume", "url": reverse("app:resume")},
-                    request.user.is_authenticated
-                    and {"name": "plex", "url": reverse("app:plex")},
+                    {"name": "home", "url": reverse("app:home"), "show": True},
+                    {"name": "plex", "url": reverse("app:plex"), "show": request.user.is_authenticated},
                 ],
                 "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
             },
