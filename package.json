@@ -1,0 +1,19 @@
+{
+  "name": "philbell.uk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com-philhabell:philhabell/philbell.uk.git",
+  "author": "philhabell <philhabell@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "js-cookie": "^2.2.1",
+    "lit-element": "^2.4.0",
+    "prettier": "^2.1.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "xml2js": "^0.4.23"
+  },
+  "scripts": {
+    "prettier": "prettier \"**/*.{js,css,scss}\" --write"
+  }
+}

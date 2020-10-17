@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link href="{% static 'css/app/home.css' %}" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+        <script src="{% static 'js/main.bundle.js' %}"></script>
+    </head>
+
+    <body>
+        <side-bar></side-bar>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
