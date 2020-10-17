@@ -15,7 +15,6 @@ from django.contrib.auth import authenticate, logout, login
 
 
 class Download(APIView):
-
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
             host="localhost", port=8080, username="admin", password="adminadmin"
@@ -51,8 +50,9 @@ class Login(APIView):
         user = authenticate(username=request.data["username"], password=request.data["password"])
         if user:
             login(request, user)
-            return HttpResponse(status=200) 
+            return HttpResponse(request=request, status=200)
         return HttpResponse(status=401)
+
 
 class Logout(APIView):
     def get(self, request):

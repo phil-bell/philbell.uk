@@ -5,11 +5,10 @@ app = typer.Typer()
 
 
 def start():
-    run("sudo service postgresql start".split())
+    run("sudo lsof -t -i tcp:8000 | xargs kill -9", shell=True)
     run("qbittorrent-nox &", shell=True)
     run(
-        "python manage.py runserver &",
-        shell=True,
+        "python manage.py runserver &", shell=True,
     )
     run("./node_modules/.bin/webpack --watch", shell=True)
 
