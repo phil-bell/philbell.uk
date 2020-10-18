@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element";
-import Cookies from "js-cookie"
+import Cookies from "js-cookie";
 
 export class ResultsTableRow extends LitElement {
   static get styles() {
@@ -137,7 +137,10 @@ export class ResultsTableRow extends LitElement {
   }
 
   get strippedFileName() {
-    return this.fileName.match(/[^\(,\[,\-,:]*/i)[0].split("S0")[0].trim();
+    return this.fileName
+      .match(/[^\(,\[,\-,:]*/i)[0]
+      .split("S0")[0]
+      .trim();
   }
 
   get location() {
@@ -163,7 +166,7 @@ export class ResultsTableRow extends LitElement {
 
   render() {
     return html`
-      <div class="grid__row ${this.open ? " show-form" : "hide-form" }">
+      <div class="grid__row ${this.open ? " show-form" : "hide-form"}">
         <div class="grid__row__info">
           <div class="grid__cell">${this.fileName}</div>
           <div class="grid__cell">${this.seeds}</div>
@@ -175,16 +178,16 @@ export class ResultsTableRow extends LitElement {
         </div>
         <div class="grid__row__form">
           <div class="grid__cell">
-            <select @change=${(e)=> (this.type = e.target.value)}>
+            <select @change=${(e) => (this.type = e.target.value)}>
               <option>--</option>
-              <option ?selected=${this.type=="movies" } value="movie">
+              <option ?selected=${this.type == "movies"} value="movie">
                 Movie
               </option>
-              <option ?selected=${this.type=="tv" } value="tv">TV</option>
+              <option ?selected=${this.type == "tv"} value="tv">TV</option>
               <option value="audiobook">Audiobook</option>
             </select>
           </div>
-          <div class="grid__cell" .hidden=${this.type !=="tv" }>
+          <div class="grid__cell" .hidden=${this.type !== "tv"}>
             <input value=${this.strippedFileName} />
           </div>
           <div class="grid__cell">
@@ -197,13 +200,13 @@ export class ResultsTableRow extends LitElement {
 
   async toggleRow(event) {
     this.open = !this.open;
-    console.log(this.strippedFileName)
+    console.log(this.strippedFileName);
     await fetch(
       `http://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
     )
       .then((response) => response.json())
       .then((data) => {
-        this.type = data.Search[0].Type
+        this.type = data.Search[0].Type;
       });
   }
 
@@ -212,7 +215,7 @@ export class ResultsTableRow extends LitElement {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get('csrftoken')
+        "X-CSRFToken": Cookies.get("csrftoken"),
       },
       body: JSON.stringify({
         name: this.fileName,
@@ -220,12 +223,16 @@ export class ResultsTableRow extends LitElement {
         location: this.location,
       }),
     })
-    .then(data => {
-      document.querySelector("toast-card").show("Your file is being downloaded")
-    })
-    .catch((error) => {
-      document.querySelector("toast-card").show("There has been a problem downloading your file")
-    });
+      .then((data) => {
+        document
+          .querySelector("toast-card")
+          .show("Your file is being downloaded");
+      })
+      .catch((error) => {
+        document
+          .querySelector("toast-card")
+          .show("There has been a problem downloading your file");
+      });
   }
 }
 

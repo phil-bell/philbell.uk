@@ -1,7 +1,5 @@
 node_modules
 src/db/mongo/*
-depreciated
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -28,3 +26,5 @@ yarn-error.log*
 settings/local.py
 
 nohup.out
+
+__pycache__
