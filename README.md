@@ -7,7 +7,7 @@ This app uses Docker so run:
     brew install pipenv
     brew install postgres
     brew install qbittorrent-nox
-    brew install pipenv
+    brew install poetry
 
 ## Operations
 To run the app yourself use:
