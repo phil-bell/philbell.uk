@@ -26,10 +26,8 @@ beautifulsoup4 = "^4.9.3"
 
 [tool.poetry.scripts]
 start = "scripts:start"
-migrate = "python manage.py migrate"
-makemig = "python manage.py makemigrations"
-collect = "python manage.py collectstatic"
-format = "black . --line-length 99"
+migrate = "scripts:migrate"
+format = "scripts:format"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
