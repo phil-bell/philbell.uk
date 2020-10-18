@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit-element";
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 
 export class SearchInput extends LitElement {
   static get styles() {
@@ -104,14 +104,13 @@ export class SearchInput extends LitElement {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get("csrftoken"),
+        "X-CSRFToken": Cookies.get('csrftoken')
       },
       body: JSON.stringify({ term: value }),
     })
-      .then((response) => response.json())
-      .then((data) =>
-        document.querySelector("results-table").updateTable(data)
-      );
+    .then((response) => response.json())
+    .then((data) => document.querySelector("results-table").updateTable(data))
+    ;
   }
 }
 

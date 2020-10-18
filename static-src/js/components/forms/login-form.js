@@ -1,16 +1,16 @@
 import { LitElement, html, css } from "lit-element";
-import Cookies from "js-cookie";
+import Cookies from "js-cookie"
 
 export class LoginForm extends LitElement {
   static get styles() {
     return css`
-      :host {
+      :host{
         margin-top: auto;
       }
-      [hidden] {
+      [hidden]{
         display: none !important;
       }
-      input {
+      input{
         font-size: 16px;
         font-family: var(--font-family);
         -webkit-font-smoothing: antialiased;
@@ -37,7 +37,7 @@ export class LoginForm extends LitElement {
         font-family: var(--font-family);
         -webkit-font-smoothing: antialiased;
       }
-      button {
+      button{
         color: var(--font-color);
         background: var(--bg-color);
         border: 1px solid var(--bg-color);
@@ -59,7 +59,7 @@ export class LoginForm extends LitElement {
       button:focus {
         outline: none;
       }
-      .login-form__container {
+      .login-form__container{
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -67,67 +67,58 @@ export class LoginForm extends LitElement {
     `;
   }
 
-  constructor() {
-    super();
-    this.username = "";
-    this.password = "";
-    this.authenticated = false;
+  constructor(){
+      super()
+      this.username = ""
+      this.password = ""
+      this.authenticated = false
   }
 
-  static get properties() {
-    return {
-      username: String,
-      password: String,
-      authenticated: Boolean,
-    };
+  static get properties(){
+    return{
+        username: String,
+        password: String,
+        authenticated: Boolean
+    }
+
   }
 
-  async login() {
-    await fetch(`${window.location.origin}/api/login/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRFToken": Cookies.get("csrftoken"),
-      },
-      body: JSON.stringify({
-        username: this.username,
-        password: this.password,
-      }),
+  async login(){
+    await fetch(`${window.location.origin}/api/login/`,{
+        method: "POST",
+        headers: {
+
+            "Content-Type": "application/json",
+            "X-CSRFToken": Cookies.get('csrftoken')
+          },
+          body: JSON.stringify({
+            username: this.username,
+            password: this.password
+          }),
     })
-      .then((response) =>
-        response.status === 200
-          ? (this.authenticated = true)
-          : (this.authenticated = false)
-      )
-      .then(
-        this.dispatchEvent(
-          new CustomEvent("reload-nav", {
-            bubbles: true,
-            composed: true,
-          })
-        )
-      );
-    window.location.reload();
+    .then((response) => response.status === 200 ? this.authenticated = true : this.authenticated = false)
+    .then(this.dispatchEvent(
+      new CustomEvent("reload-nav", {
+        bubbles: true,
+        composed: true,
+      })
+    ))
+    window.location.reload()
+    
   }
 
-  async logout() {
+  async logout(){
     await fetch(`${window.location.origin}/api/logout`)
-      .then((this.authenticated = false))
-      .then(window.location.reload());
+    .then(this.authenticated = false)
+    .then(window.location.reload())
   }
+
 
   render() {
     return html`
       <div class="login-form__container" .hidden=${this.authenticated}>
-        <input
-          placeholder="username"
-          @change=${(e) => (this.username = e.target.value)}
-        />
-        <input
-          placeholder="password"
-          type="password"
-          @change=${(e) => (this.password = e.target.value)}
-        />
+        <input placeholder="username" @change=${(e) => this.username = e.target.value}>
+        <input placeholder="password" type="password" @change=${(e) => this.password = e.target.value}>
         <button @click=${this.login}>login</button>
       </div>
       <div class="logout-form__countainer" .hidden=${!this.authenticated}>
