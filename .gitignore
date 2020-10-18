@@ -26,3 +26,5 @@ yarn-error.log*
 settings/local.py
 
 nohup.out
+
+__pycache__
