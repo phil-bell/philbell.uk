@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "philbell.uk"
+name = "app"
 version = "1.0.0"
 description = ""
 authors = ["Philip Bell"]
@@ -25,7 +25,7 @@ beautifulsoup4 = "^4.9.3"
 
 
 [tool.poetry.scripts]
-start = "python run.py"
+start = "scripts:start"
 migrate = "python manage.py migrate"
 makemig = "python manage.py makemigrations"
 collect = "python manage.py collectstatic"
