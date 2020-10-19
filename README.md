@@ -4,7 +4,6 @@ Source code for my website [philbell.uk](http://philbell.uk).
 ## Setup
 This app uses Docker so run:
 
-    brew install pipenv
     brew install postgres
     brew install qbittorrent-nox
     brew install poetry
