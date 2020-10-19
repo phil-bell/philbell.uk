@@ -33,3 +33,7 @@ def start():
     Thread(target=qbittorrent).start()
     Thread(target=django).start()
     Thread(target=webpack).start()
+
+def start_prod():
+    Thread(target=django).start()
+    Thread(target=webpack).start()
