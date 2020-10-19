@@ -28,3 +28,4 @@ settings/local.py
 nohup.out
 
 __pycache__
+*.pyc
