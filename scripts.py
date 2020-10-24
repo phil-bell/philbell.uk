@@ -13,6 +13,9 @@ def qbittorrent():
 def django():
     run("python manage.py runserver".split())
 
+def django_prod():
+    run("python manage.py runserver 192.168.2.109:8000".split())
+
 
 def webpack():
     run("npm run watch".split())
@@ -35,5 +38,5 @@ def start():
     Thread(target=webpack).start()
 
 def start_prod():
-    Thread(target=django).start()
+    Thread(target=django_prod).start()
     Thread(target=webpack).start()
