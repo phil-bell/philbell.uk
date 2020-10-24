@@ -17,7 +17,7 @@ from django.contrib.auth import authenticate, logout, login
 class Download(APIView):
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
-            host="localhost", port=8080, username="admin", password="adminadmin"
+            host="localhost", port=8080, username="admin", password=settings.QB_PASS
         )
         super().__init__(*args, **kwargs)
 
