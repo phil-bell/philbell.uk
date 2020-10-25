@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from subprocess import run
 from threading import Thread
 
