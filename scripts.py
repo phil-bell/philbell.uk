@@ -37,6 +37,6 @@ def start():
     Thread(target=django).start()
     Thread(target=webpack).start()
 
-def start_prod():
+def prod():
     Thread(target=django_prod).start()
     Thread(target=webpack).start()
