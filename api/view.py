@@ -22,8 +22,6 @@ class Download(APIView):
         super().__init__(*args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        print("adding torrent")
-        print(f"{settings.DOWNLOAD_PATH}{request.data['location']}")
         res = self.client.torrents_add(
             urls=request.data["magnet"],
             save_path=f"{settings.DOWNLOAD_PATH}{request.data['location']}",

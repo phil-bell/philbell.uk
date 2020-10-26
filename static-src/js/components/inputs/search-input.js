@@ -74,12 +74,7 @@ export class SearchInput extends LitElement {
           bottom: 65px;
         }
       }
-    `;
-  }
-
-  constructor() {
-    super();
-    this.result = {};
+    `; 
   }
 
   render() {
@@ -90,11 +85,13 @@ export class SearchInput extends LitElement {
           class="search__input"
           placeholder=" "
           type="text"
-          @keyup="${(event) => {
+          @keydown="${(event) => {
             this.handleKeyUp(event.target.value);
           }}"
         />
-        <label class="search__label" for="search-input">search</label>
+        <label class="search__label" for="search-input" @click=${(event) => {
+            this.handleKeyUp(event.target.previousElementSibling.value)
+          }}>search</label>
       </div>
     `;
   }

@@ -28,7 +28,7 @@ class PlexView(LoginRequiredMixin, TemplateView):
     def post(self, request):
         term = json.loads(request.body)["term"]
         we_get = WG()
-        we_get.parse_arguments(["--search", term, "--target", "the_pirate_bay", "--json"])
+        we_get.parse_arguments(["--search", term, "--target", "the_pirate_bay", "--json", "--sfw"])
         res = we_get.start(api_mode=True)
         return JsonResponse({"term": term, "rows": res})
 
@@ -45,8 +45,6 @@ class ResumeView(TemplateView):
 
 class NavConfigView(TemplateView):
     def get(self, request):
-        print(request.user)
-        print(request.user.is_authenticated)
         return JsonResponse(
             {
                 "nav": [

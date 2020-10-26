@@ -17,7 +17,7 @@ imdbpy = "*"
 django-fake-database-backends = "*"
 qbittorrent-api = "*"
 black = "==20.8b1"
-we-get = {git = "https://github.com/rachmadaniHaryono/we-get.git", branch = "dev"}
+we-get = {git = "https://github.com/philhabell/we-get.git", branch = "add-sfw-filter-to-tpb"}
 beautifulsoup4 = "^4.9.3"
 
 
