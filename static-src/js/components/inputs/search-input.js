@@ -74,7 +74,7 @@ export class SearchInput extends LitElement {
           bottom: 65px;
         }
       }
-    `; 
+    `;
   }
 
   render() {
@@ -85,7 +85,7 @@ export class SearchInput extends LitElement {
           class="search__input"
           placeholder=" "
           type="text"
-          @keydown="${(event) => {
+          @keyup="${(event) => {
             this.handleKeyUp(event.target.value);
           }}"
         />
