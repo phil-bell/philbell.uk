@@ -32,6 +32,10 @@ class PlexView(LoginRequiredMixin, TemplateView):
         res = we_get.start(api_mode=True)
         return JsonResponse({"term": term, "rows": res})
 
+class ManageView(LoginRequiredMixin, TemplateView):
+    template_name = "manage.html"
+    login_url = "/"
+    redirect_field_name = "app:home"
 
 class ResumeView(TemplateView):
     template_name = "resume.html"
@@ -54,6 +58,11 @@ class NavConfigView(TemplateView):
                         "url": reverse("app:plex"),
                         "show": request.user.is_authenticated,
                     },
+                    {
+                        "name": "manage",
+                        "url": reverse("app:manage"),
+                        "show": request.user.is_authenticated
+                    }
                 ],
                 "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
             },
