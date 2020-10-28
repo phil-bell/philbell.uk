@@ -6,6 +6,7 @@ authors = ["Philip Bell"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+lxml = "==4.6.0"
 django = "*"
 psycopg2-binary = "*"
 typer = "*"
