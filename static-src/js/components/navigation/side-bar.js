@@ -159,7 +159,6 @@ export class SideBar extends LitElement {
           <span></span>
           <div class="menu__list">
             ${this.navConfig.nav.map((item) => {
-              console.log();
               if (item.show) {
                 return html`<a href="${item.url}"><li>${item.name}</li></a>`;
               }

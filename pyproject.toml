@@ -12,7 +12,6 @@ typer = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
-
 imdbpy = "*"
 django-fake-database-backends = "*"
 qbittorrent-api = "*"
