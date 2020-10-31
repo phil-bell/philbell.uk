@@ -18,6 +18,7 @@ export class ResultsTableRow extends LitElement {
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
         -webkit-transition: 0.2s ease all;
+        height: 40px
       }
       .grid__row__info {
         display: grid;
@@ -40,11 +41,8 @@ export class ResultsTableRow extends LitElement {
         padding: 10px;
         align-self: center;
       }
-      .show-form {
+      [open] {
         height: 80px;
-      }
-      .hide-form {
-        height: 40px;
       }
       button {
         color: var(--font-color);
@@ -166,7 +164,7 @@ export class ResultsTableRow extends LitElement {
 
   render() {
     return html`
-      <div class="grid__row ${this.open ? " show-form" : "hide-form"}">
+      <div class="grid__row" ?open=${this.open}>
         <div class="grid__row__info">
           <div class="grid__cell">${this.fileName}</div>
           <div class="grid__cell">${this.seeds}</div>
