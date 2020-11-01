@@ -113,6 +113,7 @@ DOWNLOAD_PATH = f"/mnt/hdd/"
 
 CSRF_COOKIE_SECURE = False
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
 
 if platform.startswith("linux"):
     from .linux import *

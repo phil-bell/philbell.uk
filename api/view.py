@@ -12,6 +12,7 @@ from subprocess import run
 from imdb import IMDb
 import qbittorrentapi
 from django.contrib.auth import authenticate, logout, login
+import json
 
 
 class Download(APIView):
@@ -41,6 +42,17 @@ class Info(APIView):
 
         return JsonResponse({"res": "pass"})
 
+
+class List(APIView):
+    def __init__(self, *args, **kwargs):
+        self.client = qbittorrentapi.Client(
+            host="localhost", port=8080, username="admin", password=settings.QB_PASS
+        )
+        super().__init__(*args, **kwargs)
+
+    def get(self, request):
+        return JsonResponse({"torrents": [torrent.info for torrent in self.client.torrents_info()]})
+        
 
 class Login(APIView):
     def post(self, request):
