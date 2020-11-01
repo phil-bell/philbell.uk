@@ -1,49 +1,10 @@
-import { LitElement, html, css } from "lit-element";
+import { html, css } from "lit-element";
 import Cookies from "js-cookie";
+import { BaseTableRow } from "./base-row";
 
-export class ResultsTableRow extends LitElement {
+export class ResultsTableRow extends BaseTableRow {
   static get styles() {
-    return css`
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .grid__row {
-        display: grid;
-        grid-auto-flow: row;
-        grid-template-columns: 1fr;
-        border-bottom: 1px solid var(--bg-color);
-        overflow: hidden;
-        transition: 0.2s ease all;
-        -moz-transition: 0.2s ease all;
-        -webkit-transition: 0.2s ease all;
-        height: 40px
-      }
-      .grid__row__info {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: 1fr;
-        height: 40px;
-      }
-      .grid__row__form {
-        display: grid;
-        justify-items: end;
-        grid-auto-flow: column;
-        grid-template-columns: 1fr;
-        height: 40px;
-      }
-      .grid__row:hover {
-        color: var(--hover-color);
-        border-bottom: 1px solid var(--hover-color);
-      }
-      .grid__cell {
-        padding: 10px;
-        align-self: center;
-      }
-      [open] {
-        height: 80px;
-      }
+    return [super.styles, css`
       button {
         color: var(--font-color);
         background: var(--bg-color);
@@ -85,7 +46,7 @@ export class ResultsTableRow extends LitElement {
         font-weight: 500;
         outline: none;
       }
-    `;
+    `];
   }
 
   constructor() {
@@ -94,7 +55,6 @@ export class ResultsTableRow extends LitElement {
     this._type = "";
     this.seeds = "";
     this.magnet = "";
-    this.open = false;
   }
 
   static get properties() {
@@ -119,9 +79,6 @@ export class ResultsTableRow extends LitElement {
       },
       autoType: {
         type: String,
-      },
-      open: {
-        type: Boolean,
       },
     };
   }
@@ -162,43 +119,8 @@ export class ResultsTableRow extends LitElement {
     return this._type;
   }
 
-  render() {
-    return html`
-      <div class="grid__row" ?open=${this.open}>
-        <div class="grid__row__info">
-          <div class="grid__cell">${this.fileName}</div>
-          <div class="grid__cell">${this.seeds}</div>
-          <div class="grid__cell">
-            <button @click=${this.toggleRow}>
-              ${this.open ? "close" : "download"}
-            </button>
-          </div>
-        </div>
-        <div class="grid__row__form">
-          <div class="grid__cell">
-            <select @change=${(e) => (this.type = e.target.value)}>
-              <option>--</option>
-              <option ?selected=${this.type == "movies"} value="movie">
-                Movie
-              </option>
-              <option ?selected=${this.type == "tv"} value="tv">TV</option>
-              <option value="audiobook">Audiobook</option>
-            </select>
-          </div>
-          <div class="grid__cell" .hidden=${this.type !== "tv"}>
-            <input value=${this.strippedFileName} />
-          </div>
-          <div class="grid__cell">
-            <button @click=${this.handleDownload}>download</button>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
   async toggleRow(event) {
     this.open = !this.open;
-    console.log(this.strippedFileName);
     await fetch(
       `http://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
     )
@@ -231,6 +153,40 @@ export class ResultsTableRow extends LitElement {
           .querySelector("toast-card")
           .show("There has been a problem downloading your file");
       });
+  }
+  
+  render() {
+    return html`
+      <div class="grid__row" ?open=${this.open}>
+        <div class="grid__row__info">
+          <div class="grid__cell">${this.fileName}</div>
+          <div class="grid__cell">${this.seeds}</div>
+          <div class="grid__cell">
+            <button @click=${this.toggleRow}>
+              ${this.open ? "close" : "download"}
+            </button>
+          </div>
+        </div>
+        <div class="grid__row__form">
+          <div class="grid__cell">
+            <select @change=${(e) => (this.type = e.target.value)}>
+              <option>--</option>
+              <option ?selected=${this.type == "movies"} value="movie">
+                Movie
+              </option>
+              <option ?selected=${this.type == "tv"} value="tv">TV</option>
+              <option value="audiobook">Audiobook</option>
+            </select>
+          </div>
+          <div class="grid__cell" .hidden=${this.type !== "tv"}>
+            <input value=${this.strippedFileName} />
+          </div>
+          <div class="grid__cell">
+            <button @click=${this.handleDownload}>download</button>
+          </div>
+        </div>
+      </div>
+    `;
   }
 }
 
