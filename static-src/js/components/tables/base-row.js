@@ -18,7 +18,7 @@ export class BaseTableRow extends LitElement {
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
         -webkit-transition: 0.2s ease all;
-        height: 40px
+        height: 40px;
       }
       .grid__row__info {
         display: grid;
@@ -33,16 +33,28 @@ export class BaseTableRow extends LitElement {
         grid-template-columns: 1fr;
         height: 40px;
       }
-      .grid__row:hover {
-        color: var(--hover-color);
-        border-bottom: 1px solid var(--hover-color);
-      }
+
       .grid__cell {
-        padding: 10px;
+        padding: 5px;
         align-self: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       [open] {
         height: 80px;
+      }
+      .only-mobile {
+        display: none;
+      }
+
+      @media only screen and (max-width: 725px) {
+        .no-mobile {
+          display: none;
+        }
+        .only-mobile {
+          display: block;
+        }
       }
     `;
   }
@@ -59,7 +71,6 @@ export class BaseTableRow extends LitElement {
       },
     };
   }
-
 }
 
 customElements.define("base-table-row", BaseTableRow);

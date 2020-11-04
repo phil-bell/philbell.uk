@@ -83,7 +83,7 @@ export class LoginForm extends LitElement {
   }
 
   async login() {
-    await fetch(`${window.location.origin}/api/login/`, {
+    await fetch(`/api/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export class LoginForm extends LitElement {
   }
 
   async logout() {
-    await fetch(`${window.location.origin}/api/logout`)
+    await fetch(`/api/logout`)
       .then((this.authenticated = false))
       .then(window.location.reload());
   }

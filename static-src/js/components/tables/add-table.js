@@ -1,18 +1,18 @@
 import { LitElement, html, css } from "lit-element";
-import { BaseTable } from "./base-table"
-import "./results-table-row";
+import { BaseTable } from "./base-table";
+import "./add-row";
 
-export class ResultsTable extends BaseTable {
+export class AddTable extends BaseTable {
   render() {
     return html`
       <div class="grid">
         ${this.rows.map((row) => {
           return html`
-            <results-table-row
+            <add-row
               file-name=${row[0]}
               seeds=${row[1].seeds}
               magnet=${row[1].link}
-            ></results-table-row>
+            ></add-row>
           `;
         })}
       </div>
@@ -20,4 +20,4 @@ export class ResultsTable extends BaseTable {
   }
 }
 
-customElements.define("results-table", ResultsTable);
+customElements.define("add-table", AddTable);

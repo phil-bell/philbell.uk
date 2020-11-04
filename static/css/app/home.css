@@ -53,8 +53,10 @@ img {
   position: relative;
 }
 
-img:hover{ position: relative; 
-  top: -10px;} 
+img:hover {
+  position: relative;
+  top: -10px;
+}
 
 .content--center {
   width: 100%;

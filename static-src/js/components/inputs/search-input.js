@@ -89,9 +89,14 @@ export class SearchInput extends LitElement {
             this.handleKeyUp(event.target.value);
           }}"
         />
-        <label class="search__label" for="search-input" @click=${(event) => {
-            this.handleKeyUp(event.target.previousElementSibling.value)
-          }}>search</label>
+        <label
+          class="search__label"
+          for="search-input"
+          @click=${(event) => {
+            this.handleKeyUp(event.target.previousElementSibling.value);
+          }}
+          >search</label
+        >
       </div>
     `;
   }
@@ -106,9 +111,7 @@ export class SearchInput extends LitElement {
       body: JSON.stringify({ term: value }),
     })
       .then((response) => response.json())
-      .then((data) =>
-        document.querySelector("results-table").updateTable(data)
-      );
+      .then((data) => document.querySelector("add-table").updateTable(data));
   }
 }
 

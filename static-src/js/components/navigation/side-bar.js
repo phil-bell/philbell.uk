@@ -99,7 +99,7 @@ export class SideBar extends LitElement {
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
-        background: transparent;
+        background: var(--bg-color);
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
         transform-origin: 0% 0%;
@@ -122,7 +122,6 @@ export class SideBar extends LitElement {
     super();
     this.navConfig = [];
     this.addEventListener("reload-nav", () => {
-      console.log("event called");
       this.reload();
     });
   }
@@ -134,19 +133,16 @@ export class SideBar extends LitElement {
   }
 
   async connectedCallback() {
-    this.navConfig = await fetch(
-      `${window.location.origin}/get-nav-config`
-    ).then((response) => response.json());
+    this.navConfig = await fetch(`/api/nav-config/`).then((response) =>
+      response.json()
+    );
     super.connectedCallback();
   }
 
   async reload() {
-    console.log(this.navConfig);
-    this.navConfig = await fetch(
-      `${window.location.origin}/get-nav-config`
-    ).then((response) => (this.navConfig = response.json()));
-    console.log(this.navConfig);
-    console.log("reload");
+    this.navConfig = await fetch(`/api/nav-config/`).then(
+      (response) => (this.navConfig = response.json())
+    );
   }
 
   render() {
