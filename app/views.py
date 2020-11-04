@@ -32,10 +32,12 @@ class PlexView(LoginRequiredMixin, TemplateView):
         res = we_get.start(api_mode=True)
         return JsonResponse({"term": term, "rows": res})
 
+
 class ManageView(LoginRequiredMixin, TemplateView):
     template_name = "manage.html"
     login_url = "/"
     redirect_field_name = "app:home"
+
 
 class ResumeView(TemplateView):
     template_name = "resume.html"

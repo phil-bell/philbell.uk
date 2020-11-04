@@ -2,12 +2,12 @@ import { BaseTableRow } from "./base-row";
 import { html, css } from "lit-element";
 import "../progress/progress-bar";
 import "../buttons/row-toggle-button";
-import { Fetcher } from "../../util/fetch"
+import { Fetcher } from "../../util/fetch";
 
 export class ProgressRow extends BaseTableRow {
   constructor() {
     super();
-    this.fetcher = new Fetcher()
+    this.fetcher = new Fetcher();
     this.filename = "";
     this._state = "";
     this._progress = "";
@@ -77,9 +77,9 @@ export class ProgressRow extends BaseTableRow {
 
   static get properties() {
     return {
-      hash:{
+      hash: {
         type: String,
-        attribute: "hash"
+        attribute: "hash",
       },
       filename: {
         type: String,
@@ -96,7 +96,6 @@ export class ProgressRow extends BaseTableRow {
     };
   }
 
-  
   set filename(value) {
     this._filename = value.replaceAll(".", " ");
   }
@@ -113,12 +112,12 @@ export class ProgressRow extends BaseTableRow {
     return this._progress;
   }
 
-  get rawProgress(){
-      return parseInt(this.progress.replace("%",""))
+  get rawProgress() {
+    return parseInt(this.progress.replace("%", ""));
   }
 
-  get toggleState(){
-    return this.stop_state.includes(this.state) ? "pause" : "resume"
+  get toggleState() {
+    return this.stop_state.includes(this.state) ? "pause" : "resume";
   }
 
   set state(value) {
@@ -134,24 +133,21 @@ export class ProgressRow extends BaseTableRow {
     this.requestUpdate("progress", oldVals);
   }
 
-
-  async handleToggle(){
-    this.fetcher.post(
-      `/api/${this.toggleState}-torrent/`,
-      {hash: this.hash}
-    )
+  async handleToggle() {
+    this.fetcher.post(`/api/${this.toggleState}-torrent/`, { hash: this.hash });
   }
 
-  async handleDelete(){
-    this.fetcher.post(
-      "/api/delete-torrent/",
-      {hash: this.hash}
-    )
+  async handleDelete() {
+    this.fetcher.post("/api/delete-torrent/", { hash: this.hash });
   }
 
   render() {
     return html`
-      <div class="grid__row" ?open=${this.open} ?not-complete=${this.rawProgress < 100}>
+      <div
+        class="grid__row"
+        ?open=${this.open}
+        ?not-complete=${this.rawProgress < 100}
+      >
         <div class="grid__row__info">
           <div class="grid__cell">${this.filename}</div>
           <div class="grid__cell no-mobile">${this.progress}</div>
@@ -169,7 +165,9 @@ export class ProgressRow extends BaseTableRow {
             >
           </div>
           <div class="grid__cell">
-            <row-toggle-button @click=${this.handleDelete}>delete</row-toggle-button>
+            <row-toggle-button @click=${this.handleDelete}
+              >delete</row-toggle-button
+            >
           </div>
         </div>
       </div>

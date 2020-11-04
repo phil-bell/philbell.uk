@@ -134,17 +134,17 @@ export class SideBar extends LitElement {
   }
 
   async connectedCallback() {
-    this.navConfig = await fetch(
-      `/api/nav-config/`
-    ).then((response) => response.json());
+    this.navConfig = await fetch(`/api/nav-config/`).then((response) =>
+      response.json()
+    );
     super.connectedCallback();
   }
 
   async reload() {
     console.log(this.navConfig);
-    this.navConfig = await fetch(
-      `/api/nav-config/`
-    ).then((response) => (this.navConfig = response.json()));
+    this.navConfig = await fetch(`/api/nav-config/`).then(
+      (response) => (this.navConfig = response.json())
+    );
     console.log(this.navConfig);
     console.log("reload");
   }

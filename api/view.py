@@ -23,6 +23,7 @@ class TorrentView(APIView):
         )
         super().__init__(*args, **kwargs)
 
+
 class NavConfig(APIView):
     def get(self, request):
         return JsonResponse(
@@ -37,13 +38,14 @@ class NavConfig(APIView):
                     {
                         "name": "progress",
                         "url": reverse("app:manage"),
-                        "show": request.user.is_authenticated
-                    }
+                        "show": request.user.is_authenticated,
+                    },
                 ],
                 "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
             },
             safe=False,
         )
+
 
 class Download(TorrentView):
     def post(self, request, *args, **kwargs):
@@ -65,8 +67,10 @@ class Info(TorrentView):
 
 class ProgressList(TorrentView):
     def get(self, request):
-        return JsonResponse({"torrents": [torrent.info for torrent in self.client.torrents_info()]})
-        
+        return JsonResponse(
+            {"torrents": [torrent.info for torrent in self.client.torrents_info()]}
+        )
+
 
 class Login(APIView):
     def post(self, request):
@@ -92,9 +96,11 @@ class DeleteTorrent(TorrentView):
     def post(self, request):
         self.client.torrents_delete(delete_files=True, torrent_hashes=request.data["hash"])
 
+
 class ResumeTorrent(TorrentView):
     def post(self, request):
         self.client.torrents_resume(torrent_hashes=request.data["hash"])
+
 
 class PauseTorrent(TorrentView):
     def post(self, request):

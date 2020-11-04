@@ -111,9 +111,7 @@ export class SearchInput extends LitElement {
       body: JSON.stringify({ term: value }),
     })
       .then((response) => response.json())
-      .then((data) =>
-        document.querySelector("add-table").updateTable(data)
-      );
+      .then((data) => document.querySelector("add-table").updateTable(data));
   }
 }
 
