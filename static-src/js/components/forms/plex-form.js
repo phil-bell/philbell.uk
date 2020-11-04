@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element";
 import "../inputs/search-input";
-import "../tables/results-table";
+import "../tables/add-table";
 
 export class PlexForm extends LitElement {
   static get styles() {

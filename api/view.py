@@ -13,15 +13,39 @@ from imdb import IMDb
 import qbittorrentapi
 from django.contrib.auth import authenticate, logout, login
 import json
+from django.urls import reverse
 
 
-class Download(APIView):
+class TorrentView(APIView):
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
             host="localhost", port=8080, username="admin", password=settings.QB_PASS
         )
         super().__init__(*args, **kwargs)
 
+class NavConfig(APIView):
+    def get(self, request):
+        return JsonResponse(
+            {
+                "nav": [
+                    {"name": "home", "url": reverse("app:home"), "show": True},
+                    {
+                        "name": "add",
+                        "url": reverse("app:plex"),
+                        "show": request.user.is_authenticated,
+                    },
+                    {
+                        "name": "progress",
+                        "url": reverse("app:manage"),
+                        "show": request.user.is_authenticated
+                    }
+                ],
+                "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
+            },
+            safe=False,
+        )
+
+class Download(TorrentView):
     def post(self, request, *args, **kwargs):
         res = self.client.torrents_add(
             urls=request.data["magnet"],
@@ -32,24 +56,14 @@ class Download(APIView):
         return HttpResponse(status=400)
 
 
-class Info(APIView):
-    def __init__(self, *args, **kwargs):
-        self.imdb = IMDb()
-        super().__init__(*args, **kwargs)
-
+class Info(TorrentView):
     def post(self, request, format=None):
         res = self.imdb.search_movie(request.data["name"].split("(")[0])
 
         return JsonResponse({"res": "pass"})
 
 
-class List(APIView):
-    def __init__(self, *args, **kwargs):
-        self.client = qbittorrentapi.Client(
-            host="localhost", port=8080, username="admin", password=settings.QB_PASS
-        )
-        super().__init__(*args, **kwargs)
-
+class ProgressList(TorrentView):
     def get(self, request):
         return JsonResponse({"torrents": [torrent.info for torrent in self.client.torrents_info()]})
         
@@ -72,3 +86,16 @@ class Logout(APIView):
 class Authenticated(APIView):
     def get(self, request):
         return JsonResponse({"authenticated": request.user.is_authenticated})
+
+
+class DeleteTorrent(TorrentView):
+    def post(self, request):
+        self.client.torrents_delete(delete_files=True, torrent_hashes=request.data["hash"])
+
+class ResumeTorrent(TorrentView):
+    def post(self, request):
+        self.client.torrents_resume(torrent_hashes=request.data["hash"])
+
+class PauseTorrent(TorrentView):
+    def post(self, request):
+        self.client.torrents_pause(torrent_hashes=request.data["hash"])

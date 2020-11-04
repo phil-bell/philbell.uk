@@ -11,6 +11,6 @@ module.exports = {
     fs: "empty",
   },
   watchOptions: {
-    poll: true
+    poll: true,
   },
 };

@@ -135,7 +135,7 @@ export class SideBar extends LitElement {
 
   async connectedCallback() {
     this.navConfig = await fetch(
-      `${window.location.origin}/get-nav-config`
+      `/api/nav-config/`
     ).then((response) => response.json());
     super.connectedCallback();
   }
@@ -143,7 +143,7 @@ export class SideBar extends LitElement {
   async reload() {
     console.log(this.navConfig);
     this.navConfig = await fetch(
-      `${window.location.origin}/get-nav-config`
+      `/api/nav-config/`
     ).then((response) => (this.navConfig = response.json()));
     console.log(this.navConfig);
     console.log("reload");

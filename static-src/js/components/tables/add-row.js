@@ -2,51 +2,58 @@ import { html, css } from "lit-element";
 import Cookies from "js-cookie";
 import { BaseTableRow } from "./base-row";
 
-export class ResultsTableRow extends BaseTableRow {
+export class AddRow extends BaseTableRow {
   static get styles() {
-    return [super.styles, css`
-      button {
-        color: var(--font-color);
-        background: var(--bg-color);
-        border: 1px solid var(--bg-color);
-        border-radius: 5px;
-        padding: 5px;
-        font-family: var(--font-family);
-        -webkit-font-smoothing: antialiased;
-        font-weight: 500;
-        min-width: 74px;
-      }
-      button:hover {
-        border: 1px solid var(--hover-color);
-      }
-      button:active {
-        color: var(--hover-color);
-        outline: none;
-      }
-      button:focus {
-        outline: none;
-      }
-      input {
-        color: var(--font-color);
-        background: var(--bg-color);
-        border: 1px solid var(--font-color);
-        border-radius: 5px;
-        width: auto;
-        height: 22px;
-        outline: none;
-      }
-      select {
-        color: var(--font-color);
-        background: var(--bg-color);
-        border: 1px solid var(--font-color);
-        border-radius: 5px;
-        height: 25px;
-        font-family: var(--font-family);
-        -webkit-font-smoothing: antialiased;
-        font-weight: 500;
-        outline: none;
-      }
-    `];
+    return [
+      super.styles,
+      css`
+        .grid__row:hover {
+          color: var(--hover-color);
+          border-bottom: 1px solid var(--hover-color);
+        }
+        button {
+          color: var(--font-color);
+          background: var(--bg-color);
+          border: 1px solid var(--bg-color);
+          border-radius: 5px;
+          padding: 5px;
+          font-family: var(--font-family);
+          -webkit-font-smoothing: antialiased;
+          font-weight: 500;
+          min-width: 74px;
+        }
+        button:hover {
+          border: 1px solid var(--hover-color);
+        }
+        button:active {
+          color: var(--hover-color);
+          outline: none;
+        }
+        button:focus {
+          outline: none;
+        }
+        input {
+          color: var(--font-color);
+          background: var(--bg-color);
+          border: 1px solid var(--font-color);
+          border-radius: 5px;
+          width: auto;
+          height: 22px;
+          outline: none;
+        }
+        select {
+          color: var(--font-color);
+          background: var(--bg-color);
+          border: 1px solid var(--font-color);
+          border-radius: 5px;
+          height: 25px;
+          font-family: var(--font-family);
+          -webkit-font-smoothing: antialiased;
+          font-weight: 500;
+          outline: none;
+        }
+      `,
+    ];
   }
 
   constructor() {
@@ -131,7 +138,7 @@ export class ResultsTableRow extends BaseTableRow {
   }
 
   async handleDownload(event) {
-    await fetch(`${window.location.origin}/api/download/`, {
+    await fetch(`/api/download/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -154,7 +161,7 @@ export class ResultsTableRow extends BaseTableRow {
           .show("There has been a problem downloading your file");
       });
   }
-  
+
   render() {
     return html`
       <div class="grid__row" ?open=${this.open}>
@@ -190,4 +197,4 @@ export class ResultsTableRow extends BaseTableRow {
   }
 }
 
-customElements.define("results-table-row", ResultsTableRow);
+customElements.define("add-row", AddRow);

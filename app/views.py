@@ -45,26 +45,3 @@ class ResumeView(TemplateView):
         context["experience"] = Experience.objects.all()
         context["education"] = Education.objects.all()
         return context
-
-
-class NavConfigView(TemplateView):
-    def get(self, request):
-        return JsonResponse(
-            {
-                "nav": [
-                    {"name": "home", "url": reverse("app:home"), "show": True},
-                    {
-                        "name": "plex",
-                        "url": reverse("app:plex"),
-                        "show": request.user.is_authenticated,
-                    },
-                    {
-                        "name": "manage",
-                        "url": reverse("app:manage"),
-                        "show": request.user.is_authenticated
-                    }
-                ],
-                "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
-            },
-            safe=False,
-        )
