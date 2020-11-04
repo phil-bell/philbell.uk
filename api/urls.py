@@ -16,7 +16,7 @@ urlpatterns = [
     path("logout/", Logout.as_view()),
     path("authenticated/", Authenticated.as_view()),
     path("progress-list/", ProgressList.as_view()),
-    path("delete-torren/t", DeleteTorrent.as_view()),
+    path("delete-torrent/", DeleteTorrent.as_view()),
     path("pause-torrent/", PauseTorrent.as_view()),
     path("resume-torrent/", ResumeTorrent.as_view()),
 ]

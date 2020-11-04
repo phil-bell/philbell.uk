@@ -99,7 +99,7 @@ export class SideBar extends LitElement {
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
-        background: transparent;
+        background: var(--bg-color);
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
         transform-origin: 0% 0%;

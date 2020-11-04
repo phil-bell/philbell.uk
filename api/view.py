@@ -4,7 +4,7 @@ from django.views import generic
 from rest_framework import mixins
 from rest_framework.views import APIView
 from django.contrib.auth.models import User, Group
-from django.http.response import JsonResponse, HttpResponse
+from django.http.response import JsonResponse
 from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
@@ -54,8 +54,8 @@ class Download(TorrentView):
             save_path=f"{settings.DOWNLOAD_PATH}{request.data['location']}",
         )
         if res == "Ok.":
-            return HttpResponse(status=201)
-        return HttpResponse(status=400)
+            return JsonResponse(status=201, data={})
+        return JsonResponse(status=400, data={})
 
 
 class Info(TorrentView):
@@ -77,14 +77,14 @@ class Login(APIView):
         user = authenticate(username=request.data["username"], password=request.data["password"])
         if user:
             login(request, user)
-            return HttpResponse(status=200)
-        return HttpResponse(status=401)
+            return JsonResponse(status=200, data={})
+        return JsonResponse(status=401, data={})
 
 
 class Logout(APIView):
     def get(self, request):
         logout(request)
-        return HttpResponse(status=200)
+        return JsonResponse(status=200, data={})
 
 
 class Authenticated(APIView):
@@ -95,13 +95,16 @@ class Authenticated(APIView):
 class DeleteTorrent(TorrentView):
     def post(self, request):
         self.client.torrents_delete(delete_files=True, torrent_hashes=request.data["hash"])
+        return JsonResponse(status=200, data={})
 
 
 class ResumeTorrent(TorrentView):
     def post(self, request):
         self.client.torrents_resume(torrent_hashes=request.data["hash"])
+        return JsonResponse(status=200, data={})
 
 
 class PauseTorrent(TorrentView):
     def post(self, request):
         self.client.torrents_pause(torrent_hashes=request.data["hash"])
+        return JsonResponse(status=200, data={})
