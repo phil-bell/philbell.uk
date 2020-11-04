@@ -72,7 +72,7 @@ export class ProgressRow extends BaseTableRow {
           top: 79px;
         }
         [open]:hover:after{
-          top: 79px; 
+          top: 79px;
         }
       `,
     ];
@@ -136,11 +136,11 @@ export class ProgressRow extends BaseTableRow {
     this.requestUpdate("progress", oldVals);
   }
 
-  async handleToggle() {
+  handleToggle() {
     this.fetcher.post(`/api/${this.toggleState}-torrent/`, { hash: this.hash });
   }
 
-  async handleDelete() {
+  handleDelete() {
     this.fetcher.post("/api/delete-torrent/", { hash: this.hash });
   }
 
