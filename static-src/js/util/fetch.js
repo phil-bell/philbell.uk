@@ -20,7 +20,6 @@ export class Fetcher {
       .then((response) => response.json())
       .then((data) => data)
       .catch((error) => {
-        console.log(error)
         document.querySelector("toast-card").show("An error has occured");
       });
   }

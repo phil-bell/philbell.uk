@@ -122,7 +122,6 @@ export class SideBar extends LitElement {
     super();
     this.navConfig = [];
     this.addEventListener("reload-nav", () => {
-      console.log("event called");
       this.reload();
     });
   }
@@ -141,12 +140,9 @@ export class SideBar extends LitElement {
   }
 
   async reload() {
-    console.log(this.navConfig);
     this.navConfig = await fetch(`/api/nav-config/`).then(
       (response) => (this.navConfig = response.json())
     );
-    console.log(this.navConfig);
-    console.log("reload");
   }
 
   render() {
