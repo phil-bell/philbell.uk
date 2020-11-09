@@ -1,42 +1,19 @@
 import { LitElement, html, css } from "lit-element";
 import Cookies from "js-cookie";
+import "../inputs/login-input"
 
 export class LoginForm extends LitElement {
   static get styles() {
     return css`
       :host {
         margin-top: auto;
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
       [hidden] {
         display: none !important;
-      }
-      input {
-        font-size: 16px;
-        font-family: var(--font-family);
-        -webkit-font-smoothing: antialiased;
-        background: var(--bg-color);
-        color: var(--font-color);
-        border: 1px solid var(--font-color);
-        border-radius: 8px;
-        height: 30px;
-        text-align: center;
-        margin: auto;
-        transition: border-color 0.25s ease-in-out;
-        margin: 5px 0;
-      }
-      input:hover:not(:focus) {
-        color: var(--hover-color);
-      }
-      input:focus {
-        border: 1px solid var(--hover-color);
-        outline: none;
-      }
-      input::placeholder {
-        color: var(--font-color);
-        font-size: 16px;
-        font-family: var(--font-family);
-        -webkit-font-smoothing: antialiased;
-      }
+      }      
       button {
         color: var(--font-color);
         background: var(--bg-color);
@@ -58,6 +35,11 @@ export class LoginForm extends LitElement {
       }
       button:focus {
         outline: none;
+      }
+      .form__container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
       }
       .login-form__container {
         display: flex;
@@ -82,22 +64,30 @@ export class LoginForm extends LitElement {
     };
   }
 
-  async login() {
+  async login(e) {
+    e.preventDefault()
     await fetch(`/api/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-CSRFToken": Cookies.get("csrftoken"),
       },
-      body: JSON.stringify({
-        username: this.username,
-        password: this.password,
-      }),
+      body: JSON.stringify([...e.target.children]
+        .filter((element) => element.tagName == "LOGIN-INPUT")
+        .reduce((ob, el) => ({ ...ob, [el.name]: el.value }), {})),
     })
-      .then((response) =>
-        response.status === 200
-          ? (this.authenticated = true)
-          : (this.authenticated = false)
+      .then((response) => {
+        if (response.status == 200){
+          this.authenticated = true
+          document.querySelector("toast-card").show("login successful")
+          window.location.reload();
+        }
+        else{
+          this.authenticated = false
+          document.querySelector("toast-card").show("login failed")
+
+        }
+      }
       )
       .then(
         this.dispatchEvent(
@@ -107,7 +97,7 @@ export class LoginForm extends LitElement {
           })
         )
       );
-    window.location.reload();
+    
   }
 
   async logout() {
@@ -118,18 +108,13 @@ export class LoginForm extends LitElement {
 
   render() {
     return html`
-      <div class="login-form__container" .hidden=${this.authenticated}>
-        <input
-          placeholder="username"
-          @change=${(e) => (this.username = e.target.value)}
-        />
-        <input
-          placeholder="password"
-          type="password"
-          @change=${(e) => (this.password = e.target.value)}
-        />
-        <button @click=${this.login}>login</button>
-      </div>
+      <form class="login-form__container" .hidden=${this.authenticated} @submit=${this.login}>
+        <login-input id="username" name="username" label="username" type="text" />
+        </login-input>
+        <login-input id="password" name="password" type="password" label="password" />
+        </login-input>
+        <button type="submit">login</button>
+      </form>
       <div class="logout-form__countainer" .hidden=${!this.authenticated}>
         <button @click=${this.logout}>logout</button>
       </div>
