@@ -5,7 +5,6 @@ from rest_framework import mixins
 from rest_framework.views import APIView
 from django.contrib.auth.models import User, Group
 from django.http.response import JsonResponse
-from rest_framework import viewsets
 from rest_framework import permissions
 from rest_framework.response import Response
 from subprocess import run
