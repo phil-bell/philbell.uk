@@ -1,8 +1,6 @@
 from django.conf import settings
 from rest_framework.views import APIView
 from django.http.response import JsonResponse
-from subprocess import run
-from imdb import IMDb
 import qbittorrentapi
 from django.contrib.auth import authenticate, logout, login
 from django.urls import reverse
@@ -48,13 +46,6 @@ class Download(TorrentView):
         if res == "Ok.":
             return JsonResponse(status=201, data={})
         return JsonResponse(status=400, data={})
-
-
-class Info(TorrentView):
-    def post(self, request, format=None):
-        res = self.imdb.search_movie(request.data["name"].split("(")[0])
-
-        return JsonResponse({"res": "pass"})
 
 
 class ProgressList(TorrentView):

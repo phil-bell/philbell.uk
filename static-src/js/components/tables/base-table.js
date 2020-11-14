@@ -6,6 +6,8 @@ export class BaseTable extends LitElement {
       :host {
         display: flex;
         justify-content: center;
+        height: 90vh;
+        overflow-y: scroll;
       }
       .grid {
         display: flex;
