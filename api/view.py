@@ -1,17 +1,8 @@
 from django.conf import settings
-from django.http import request
-from django.views import generic
-from rest_framework import mixins
 from rest_framework.views import APIView
-from django.contrib.auth.models import User, Group
 from django.http.response import JsonResponse
-from rest_framework import permissions
-from rest_framework.response import Response
-from subprocess import run
-from imdb import IMDb
 import qbittorrentapi
 from django.contrib.auth import authenticate, logout, login
-import json
 from django.urls import reverse
 
 
@@ -57,17 +48,10 @@ class Download(TorrentView):
         return JsonResponse(status=400, data={})
 
 
-class Info(TorrentView):
-    def post(self, request, format=None):
-        res = self.imdb.search_movie(request.data["name"].split("(")[0])
-
-        return JsonResponse({"res": "pass"})
-
-
 class ProgressList(TorrentView):
     def get(self, request):
         return JsonResponse(
-            {"torrents": [torrent.info for torrent in self.client.torrents_info()]}
+            {"torrents": [torrent.info for torrent in self.client.torrents_info(sort="added_on", reverse=True)]}
         )
 
 
