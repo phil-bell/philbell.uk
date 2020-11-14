@@ -10,7 +10,6 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path("", include(router.urls)),
     path("nav-config/", NavConfig.as_view()),
-    path("info/", Info.as_view()),
     path("download/", Download.as_view()),
     path("login/", Login.as_view()),
     path("logout/", Logout.as_view()),
