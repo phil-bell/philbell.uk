@@ -9,7 +9,7 @@ from django.urls import reverse
 class TorrentView(APIView):
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
-            host="localhost", port=8080, username="admin", password=settings.QB_PASS
+            host=settings.QB_HOST, port=settings.QB_PORT, username=settings.QB_USER, password=settings.QB_PASS
         )
         super().__init__(*args, **kwargs)
 

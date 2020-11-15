@@ -19,11 +19,13 @@ export class BaseTable extends LitElement {
   constructor() {
     super();
     this._rows = [];
+    this.loading = false;
   }
 
   static get properties() {
     return {
       rows: { type: Object },
+      loading: { type: Boolean},
     };
   }
 
