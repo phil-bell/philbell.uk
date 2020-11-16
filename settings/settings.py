@@ -109,11 +109,17 @@ ROOT_URLCONF = "urls.urls"
 
 DEBUG = True
 
-DOWNLOAD_PATH = f"/mnt/hdd/"
+DOWNLOAD_PATH = "/mnt/hdd/"
 
 CSRF_COOKIE_SECURE = False
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+QB_PASS = "adminadmin"
+QB_USER = "admin"
+QB_PORT = "8080"
+QB_HOST = "localhost"
+
 
 if platform.startswith("linux"):
     from .linux import *
@@ -122,3 +128,4 @@ elif platform.startswith("darwin"):
 elif platform.startswith("win32"):
     from .win import *
 from .local import *
+

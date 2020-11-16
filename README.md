@@ -4,9 +4,7 @@ Source code for my website [philbell.uk](http://philbell.uk).
 ## Setup
 Install the necessary deps:
 
-    brew install postgres
-    brew install qbittorrent-nox
-    brew install poetry
+    brew install postgres qbittorrent-nox poetry
     poetry install
 
 ## Operations

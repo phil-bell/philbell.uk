@@ -1,19 +1,23 @@
 import { html } from "lit-element";
 import { BaseTable } from "./base-table";
 import "./progress-row";
+import "../progress/loading-state";
 
 export class ProgressTable extends BaseTable {
   async getList() {
     await fetch(`/api/progress-list`)
       .then((response) => response.json())
-      .then((data) => (this.rows = data.torrents));
+      .then((data) => (this.rows = data.torrents))
+
   }
 
   async poll() {
     await this.getList();
+    this.loading = false
+    console.log(this.loading)
     while (true) {
-      await this.wait();
       await this.getList();
+      await this.wait();
     }
   }
 
@@ -25,14 +29,23 @@ export class ProgressTable extends BaseTable {
 
   async startPoll() {
     await this.poll();
+
   }
 
   connectedCallback() {
+    this.loading = true;
+    console.log(this.loading)
     this.startPoll();
     super.connectedCallback();
   }
 
   render() {
+    if (this.loading){
+      return html`
+        <loading-state></loading-state>
+      `
+    }
+    else{
     return html`
       <div class="grid">
         ${this.rows.map((row) => {
@@ -48,6 +61,7 @@ export class ProgressTable extends BaseTable {
         })}
       </div>
     `;
+    }
   }
 }
 

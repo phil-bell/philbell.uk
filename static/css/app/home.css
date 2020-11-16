@@ -19,22 +19,26 @@ h1 {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 22px;
+  -webkit-font-smoothing: antialiased;
 }
 h2 {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 24px;
+  -webkit-font-smoothing: antialiased;
 }
 h3 {
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 20px;
+  -webkit-font-smoothing: antialiased;
 }
 p {
   font-family: var(--font-family);
   font-weight: 500;
   line-height: 18px;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -63,7 +67,7 @@ img:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 30px;
+  padding: 50px;
 }
 
 .content--height-center {
@@ -72,5 +76,5 @@ img:hover {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 30px;
+  padding: 50px;
 }
