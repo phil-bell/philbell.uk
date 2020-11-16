@@ -36,7 +36,7 @@ export class LoadingState extends LitElement {
       .box_content:before {
         content: "loading...";
         position: absolute;
-        color: #ff00c1;
+        color: var(--hover-color);
         z-index: -1;
         right: 0;
         left: 0;
@@ -49,7 +49,7 @@ export class LoadingState extends LitElement {
       .box_content:after {
         content: "loading...";
         position: absolute;
-        color: #3498db;
+        color: var(--font-color);
         width: 100%;
         height: 100%;
         right: 0;
