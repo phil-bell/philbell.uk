@@ -12,9 +12,9 @@ export class AddRow extends BaseTableRow {
           border-bottom: 1px solid var(--hover-color);
         }
         button {
-          color: var(--font-color);
-          background: var(--bg-color);
-          border: 1px solid var(--bg-color);
+          color: var(--secondary-color);
+          background: var(--primary-color);
+          border: 1px solid var(--primary-color);
           border-radius: 5px;
           padding: 5px;
           font-family: var(--font-family);
@@ -33,18 +33,18 @@ export class AddRow extends BaseTableRow {
           outline: none;
         }
         input {
-          color: var(--font-color);
-          background: var(--bg-color);
-          border: 1px solid var(--font-color);
+          color: var(--secondary-color);
+          background: var(--primary-color);
+          border: 1px solid var(--secondary-color);
           border-radius: 5px;
           width: auto;
           height: 22px;
           outline: none;
         }
         select {
-          color: var(--font-color);
-          background: var(--bg-color);
-          border: 1px solid var(--font-color);
+          color: var(--secondary-color);
+          background: var(--primary-color);
+          border: 1px solid var(--secondary-color);
           border-radius: 5px;
           height: 25px;
           font-family: var(--font-family);

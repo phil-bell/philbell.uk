@@ -28,9 +28,9 @@ export class SearchInput extends LitElement {
         font-size: 16px;
         font-family: var(--font-family);
         -webkit-font-smoothing: antialiased;
-        background: var(--bg-color);
-        color: var(--font-color);
-        border: 1px solid var(--font-color);
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        border: 1px solid var(--secondary-color);
         border-radius: 8px;
         height: 35px;
         width: 500px;
@@ -50,11 +50,11 @@ export class SearchInput extends LitElement {
       }
       .search__input:focus ~ .search__label {
         left: 290px;
-        color: var(--font-color);
+        color: var(--secondary-color);
       }
       .search__input:not(:placeholder-shown) ~ .search__label {
         left: 290px;
-        color: var(--font-color);
+        color: var(--secondary-color);
         cursor: pointer;
       }
       .search__label:hover {

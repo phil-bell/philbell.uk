@@ -13,7 +13,7 @@ export class BaseTableRow extends LitElement {
         display: grid;
         grid-auto-flow: row;
         grid-template-columns: 1fr;
-        border-bottom: 1px solid var(--bg-color);
+        border-bottom: 1px solid var(--primary-color);
         overflow: hidden;
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;

@@ -20,9 +20,9 @@ export class LoginInput extends LitElement {
             font-size: 16px;
             font-family: var(--font-family);
             -webkit-font-smoothing: antialiased;
-            background: var(--bg-color);
-            color: var(--font-color);
-            border: 1px solid var(--font-color);
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
             border-radius: 8px;
             height: 35px;
             width: 150px;
@@ -42,11 +42,11 @@ export class LoginInput extends LitElement {
         }
         input:focus ~ label {
             left: 160px;
-            color: var(--font-color);
+            color: var(--secondary-color);
         }
         input:not(:placeholder-shown) ~ label {
             left: 160px;
-            color: var(--font-color);
+            color: var(--secondary-color);
             cursor: pointer;
         }
         label:hover {

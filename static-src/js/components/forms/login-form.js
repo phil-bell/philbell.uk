@@ -15,9 +15,9 @@ export class LoginForm extends LitElement {
         display: none !important;
       }      
       button {
-        color: var(--font-color);
-        background: var(--bg-color);
-        border: 1px solid var(--bg-color);
+        color: var(--secondary-color);
+        background: var(--primary-color);
+        border: 1px solid var(--primary-color);
         border-radius: 5px;
         padding: 5px;
         font-size: 18px;

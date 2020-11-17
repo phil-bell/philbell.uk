@@ -4,9 +4,9 @@ export class RowToggleButton extends LitElement {
   static get styles() {
     return css`
       button {
-        color: var(--font-color);
-        background: var(--bg-color);
-        border: 1px solid var(--bg-color);
+        color: var(--secondary-color);
+        background: var(--primary-color);
+        border: 1px solid var(--primary-color);
         border-radius: 5px;
         padding: 5px;
         font-family: var(--font-family);

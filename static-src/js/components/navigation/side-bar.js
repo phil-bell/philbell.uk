@@ -7,8 +7,8 @@ export class SideBar extends LitElement {
       body {
         margin: 0;
         padding: 0;
-        background: var(--bg-color);
-        color: var(--font-color);
+        background: var(--primary-color);
+        color: var(--secondary-color);
         font-family: var(--font-family);
       }
 
@@ -28,7 +28,7 @@ export class SideBar extends LitElement {
 
       .menu__toggle a {
         text-decoration: none;
-        color: var(--font-color);
+        color: var(--secondary-color);
         transition: color 0.3s ease;
       }
 
@@ -55,7 +55,7 @@ export class SideBar extends LitElement {
         height: 4px;
         margin-bottom: 5px;
         position: relative;
-        background: var(--font-color);
+        background: var(--secondary-color);
         border-radius: 3px;
         z-index: 1;
         transform-origin: 4px 0px;
@@ -99,7 +99,7 @@ export class SideBar extends LitElement {
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
-        background: var(--bg-color);
+        background: var(--primary-color);
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
         transform-origin: 0% 0%;
