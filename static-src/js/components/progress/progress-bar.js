@@ -8,10 +8,10 @@ export class ProgressBar extends LitElement {
       }
       .progress__container {
         width: 90%;
-        background-color: var(--bg-color);
+        background-color: var(--primary-color);
         padding: 3px;
         border-radius: 15px;
-        border: 1px solid var(--font-color);
+        border: 1px solid var(--secondary-color);
         transition: width 500ms ease-in-out;
       }
 

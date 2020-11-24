@@ -28,13 +28,14 @@ export class LoadingState extends LitElement {
         font-family: var(--font-family);
         font-weight: bold;
         position: relative;
-        color: white;
+        color: var(--primary-color);
         font-weight: 500;
         z-index: 1;
+        text-align: left;
         -webkit-font-smoothing: antialiased;
       }
       .box_content:before {
-        content: "loading...";
+        content: "loading";
         position: absolute;
         color: var(--hover-color);
         z-index: -1;
@@ -44,12 +45,12 @@ export class LoadingState extends LitElement {
         bottom: 0;
         width: 100%;
         height: 100%;
-        animation: glitch 2s infinite;
+        animation: glitch 2.9s infinite;
       }
       .box_content:after {
-        content: "loading...";
+        content: "loading";
         position: absolute;
-        color: var(--font-color);
+        color: var(--secondary-color);
         width: 100%;
         height: 100%;
         right: 0;
@@ -62,22 +63,27 @@ export class LoadingState extends LitElement {
 
       @keyframes glitch {
         0% {
+          content: "loading";
           left: -2px;
           top: -2px;
         }
         25% {
+          content: "loading";
           left: 2px;
           top: 0px;
         }
         50% {
+          content: "loading.";
           left: -1px;
           top: 2px;
         }
         75% {
+          content: "loading..";
           left: 1px;
           top: -1px;
         }
         100% {
+          content: "loading...";
           left: 0px;
           top: -2px;
         }

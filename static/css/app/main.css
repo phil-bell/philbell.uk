@@ -1,18 +1,21 @@
 :root {
-  --bg-color: white;
-  --font-color: black;
+  --primary-color: white;
+  --secondary-color: black;
   --hover-color: #ffa2a2;
   --font-family: "Kumbh Sans", sans-serif;
 }
 
 body {
-  background-color: var(--bg-color);
-  color: var(--font-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   display: flex;
   font-weight: 500;
   overflow: hidden;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 
 h1 {
