@@ -103,14 +103,14 @@ export class ToggleInput extends LitElement {
         @-webkit-keyframes resetRing{
           to{
             stroke-dashoffset: 0;
-            stroke: var(--primary-color);
+            stroke: var(--secondary-color);
           }
         }
         
         @keyframes resetRing{
           to{
             stroke-dashoffset: 0;
-            stroke:  var(--primary-color);
+            stroke:  var(--secondary-color);
           }
         }        
         `
