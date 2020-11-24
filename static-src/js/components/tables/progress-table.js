@@ -40,7 +40,7 @@ export class ProgressTable extends BaseTable {
   }
 
   render() {
-    if (true){
+    if (this.loading){
       return html`
         <loading-state></loading-state>
       `
