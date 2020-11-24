@@ -16,7 +16,7 @@ export class LoginForm extends LitElement {
       }      
       button {
         color: var(--secondary-color);
-        background: var(--primary-color);
+        background-color: var(--primary-color);
         border: 1px solid var(--primary-color);
         border-radius: 5px;
         padding: 5px;
@@ -26,6 +26,10 @@ export class LoginForm extends LitElement {
         font-weight: 500;
         min-width: 74px;
         margin: auto;
+        -webkit-transition: background-color 1000ms linear, border 1000ms linear;
+        -ms-transition: background-color 1000ms linear, border 1000ms linear;
+        transition: background-color 1000ms linear, border 1000ms linear;
+     
       }
       button:hover {
         color: var(--hover-color);

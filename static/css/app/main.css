@@ -13,6 +13,9 @@ body {
   display: flex;
   font-weight: 500;
   overflow: hidden;
+  -webkit-transition: background-color 1000ms linear;
+  -ms-transition: background-color 1000ms linear;
+  transition: background-color 1000ms linear;
 }
 
 h1 {

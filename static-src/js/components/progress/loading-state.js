@@ -28,7 +28,7 @@ export class LoadingState extends LitElement {
         font-family: var(--font-family);
         font-weight: bold;
         position: relative;
-        color: white;
+        color: var(--primary-color);
         font-weight: 500;
         z-index: 1;
         text-align: left;
