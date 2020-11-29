@@ -11,10 +11,6 @@ export class SideBar extends LitElement {
         background: var(--primary-color);
         color: var(--secondary-color);
         font-family: var(--font-family);
-        -webkit-transition: background-color 1000ms linear;
-        -ms-transition: background-color 1000ms linear;
-        transition: background-color 1000ms linear;
-        
       }
 
       .menu__toggle {
@@ -109,10 +105,7 @@ export class SideBar extends LitElement {
         -webkit-font-smoothing: antialiased;
         transform-origin: 0% 0%;
         transform: translate(-100%, 0);
-        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-        -webkit-transition: background-color 1000ms linear;
-        -ms-transition: background-color 1000ms linear;
-        transition: background-color 1000ms linear;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 1000ms linear;
       }
 
       .menu__list li {
