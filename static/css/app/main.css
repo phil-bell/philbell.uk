@@ -5,6 +5,19 @@
   --font-family: "Kumbh Sans", sans-serif;
 }
 
+::-webkit-scrollbar {
+  width: 1px;   
+  height: 10px;   
+  overflow: hidden;       
+}
+::-webkit-scrollbar-track {
+  background: transparent;       
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--hover-color);    
+  border-radius: 20px;      
+}
+
 body {
   background-color: var(--primary-color);
   color: var(--secondary-color);
