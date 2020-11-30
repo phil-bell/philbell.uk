@@ -105,7 +105,8 @@ export class SideBar extends LitElement {
         -webkit-font-smoothing: antialiased;
         transform-origin: 0% 0%;
         transform: translate(-100%, 0);
-        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background-color 1000ms linear;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          background-color 1000ms linear;
       }
 
       .menu__list li {
@@ -161,7 +162,7 @@ export class SideBar extends LitElement {
               }
             })}
             <login-form
-            .authenticated=${this.navConfig.authenticated}
+              .authenticated=${this.navConfig.authenticated}
             ></login-form>
             <toggle-input></toggle-input>
           </div>

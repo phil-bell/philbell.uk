@@ -3,7 +3,7 @@ import { html, css, LitElement } from "lit-element";
 export class LoadingState extends LitElement {
   static get styles() {
     return css`
-    .box {
+      .box {
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;

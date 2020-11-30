@@ -7,14 +7,13 @@ export class ProgressTable extends BaseTable {
   async getList() {
     await fetch(`/api/progress-list`)
       .then((response) => response.json())
-      .then((data) => (this.rows = data.torrents))
-
+      .then((data) => (this.rows = data.torrents));
   }
 
   async poll() {
     await this.getList();
-    this.loading = false
-    console.log(this.loading)
+    this.loading = false;
+    console.log(this.loading);
     while (true) {
       await this.getList();
       await this.wait();
@@ -29,38 +28,34 @@ export class ProgressTable extends BaseTable {
 
   async startPoll() {
     await this.poll();
-
   }
 
   connectedCallback() {
     this.loading = true;
-    console.log(this.loading)
+    console.log(this.loading);
     this.startPoll();
     super.connectedCallback();
   }
 
   render() {
-    if (this.loading){
+    if (this.loading) {
+      return html` <loading-state></loading-state> `;
+    } else {
       return html`
-        <loading-state></loading-state>
-      `
-    }
-    else{
-    return html`
-      <div class="grid">
-        ${this.rows.map((row) => {
-          return html`
-            <progress-row
-              .hash=${row[1].hash}
-              .state=${row[1].state}
-              .filename=${row[1].name}
-              .progress=${row[1].progress}
-            >
-            </progress-row>
-          `;
-        })}
-      </div>
-    `;
+        <div class="grid">
+          ${this.rows.map((row) => {
+            return html`
+              <progress-row
+                .hash=${row[1].hash}
+                .state=${row[1].state}
+                .filename=${row[1].name}
+                .progress=${row[1].progress}
+              >
+              </progress-row>
+            `;
+          })}
+        </div>
+      `;
     }
   }
 }

@@ -25,7 +25,7 @@ export class BaseTable extends LitElement {
   static get properties() {
     return {
       rows: { type: Object },
-      loading: { type: Boolean},
+      loading: { type: Boolean },
     };
   }
 
