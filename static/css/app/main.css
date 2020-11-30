@@ -6,16 +6,16 @@
 }
 
 ::-webkit-scrollbar {
-  width: 1px;   
-  height: 10px;   
-  overflow: hidden;       
+  width: 1px;
+  height: 10px;
+  overflow: hidden;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;       
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: var(--hover-color);    
-  border-radius: 20px;      
+  background-color: var(--hover-color);
+  border-radius: 20px;
 }
 
 body {

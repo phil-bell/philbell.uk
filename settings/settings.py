@@ -129,4 +129,3 @@ elif platform.startswith("darwin"):
 elif platform.startswith("win32"):
     from .win import *
 from .local import *
-

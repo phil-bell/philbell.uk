@@ -71,7 +71,7 @@ export class ProgressRow extends BaseTableRow {
         [open]:after {
           top: 79px;
         }
-        [open]:hover:after{
+        [open]:hover:after {
           top: 79px;
         }
       `,

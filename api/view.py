@@ -9,7 +9,10 @@ from django.urls import reverse
 class TorrentView(APIView):
     def __init__(self, *args, **kwargs):
         self.client = qbittorrentapi.Client(
-            host=settings.QB_HOST, port=settings.QB_PORT, username=settings.QB_USER, password=settings.QB_PASS
+            host=settings.QB_HOST,
+            port=settings.QB_PORT,
+            username=settings.QB_USER,
+            password=settings.QB_PASS,
         )
         super().__init__(*args, **kwargs)
 
@@ -51,7 +54,12 @@ class Download(TorrentView):
 class ProgressList(TorrentView):
     def get(self, request):
         return JsonResponse(
-            {"torrents": [torrent.info for torrent in self.client.torrents_info(sort="added_on", reverse=True)]}
+            {
+                "torrents": [
+                    torrent.info
+                    for torrent in self.client.torrents_info(sort="added_on", reverse=True)
+                ]
+            }
         )
 
 

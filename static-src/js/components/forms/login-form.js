@@ -1,6 +1,6 @@
 import { LitElement, html, css } from "lit-element";
 import Cookies from "js-cookie";
-import "../inputs/login-input"
+import "../inputs/login-input";
 
 export class LoginForm extends LitElement {
   static get styles() {
@@ -13,7 +13,7 @@ export class LoginForm extends LitElement {
       }
       [hidden] {
         display: none !important;
-      }      
+      }
       button {
         color: var(--secondary-color);
         background-color: var(--primary-color);
@@ -29,7 +29,6 @@ export class LoginForm extends LitElement {
         -webkit-transition: background-color 1000ms linear, border 1000ms linear;
         -ms-transition: background-color 1000ms linear, border 1000ms linear;
         transition: background-color 1000ms linear, border 1000ms linear;
-     
       }
       button:hover {
         color: var(--hover-color);
@@ -69,30 +68,29 @@ export class LoginForm extends LitElement {
   }
 
   async login(e) {
-    e.preventDefault()
+    e.preventDefault();
     await fetch(`/api/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-CSRFToken": Cookies.get("csrftoken"),
       },
-      body: JSON.stringify([...e.target.children]
-        .filter((element) => element.tagName == "LOGIN-INPUT")
-        .reduce((ob, el) => ({ ...ob, [el.name]: el.value }), {})),
+      body: JSON.stringify(
+        [...e.target.children]
+          .filter((element) => element.tagName == "LOGIN-INPUT")
+          .reduce((ob, el) => ({ ...ob, [el.name]: el.value }), {})
+      ),
     })
       .then((response) => {
-        if (response.status == 200){
-          this.authenticated = true
-          document.querySelector("toast-card").show("login successful")
+        if (response.status == 200) {
+          this.authenticated = true;
+          document.querySelector("toast-card").show("login successful");
           window.location.reload();
+        } else {
+          this.authenticated = false;
+          document.querySelector("toast-card").show("login failed");
         }
-        else{
-          this.authenticated = false
-          document.querySelector("toast-card").show("login failed")
-
-        }
-      }
-      )
+      })
       .then(
         this.dispatchEvent(
           new CustomEvent("reload-nav", {
@@ -101,7 +99,6 @@ export class LoginForm extends LitElement {
           })
         )
       );
-    
   }
 
   async logout() {
@@ -112,7 +109,9 @@ export class LoginForm extends LitElement {
 
   render() {
     return html`
-      <form class="login-form__container" .hidden=${this.authenticated} @submit=${this.login}>
+      <form class="login-form__container" .hidden=${
+        this.authenticated
+      } @submit=${this.login}>
         <login-input id="username" name="username" label="username" type="text" />
         </login-input>
         <login-input id="password" name="password" type="password" label="password" />
