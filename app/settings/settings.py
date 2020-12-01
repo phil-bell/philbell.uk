@@ -14,7 +14,7 @@ from pathlib import Path
 from sys import platform
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -103,10 +103,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [f"{BASE_DIR}/static/"]
-STATIC_ROOT = f"{BASE_DIR}/staticfiles/"
+STATICFILES_DIRS = [f"{BASE_DIR}/app/static/"]
+STATIC_ROOT = f"{BASE_DIR}/app/staticfiles/"
 
-ROOT_URLCONF = "urls.urls"
+ROOT_URLCONF = "urls"
 
 DEBUG = True
 
