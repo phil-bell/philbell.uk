@@ -1,14 +1,11 @@
 import json
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import request
-
 from django.views.generic import TemplateView
-
 from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import render
-
-from we_get.core.we_get import WG
+from the_python_bay import tpb
 
 from .models import Experience, Education
 
@@ -27,9 +24,7 @@ class PlexView(LoginRequiredMixin, TemplateView):
 
     def post(self, request):
         term = json.loads(request.body)["term"]
-        we_get = WG()
-        we_get.parse_arguments(["--search", term, "--target", "the_pirate_bay", "--json", "--sfw"])
-        res = we_get.start(api_mode=True)
+        res = tpb.search(term)
         return JsonResponse({"term": term, "rows": res})
 
 
