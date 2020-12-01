@@ -16,7 +16,7 @@ def django():
 
 
 def django_prod():
-    run("python manage.py runserver 192.168.2.109:8000".split())
+    run("python manage.py runserver 0.0.0.0:8000".split())
 
 
 def webpack():
