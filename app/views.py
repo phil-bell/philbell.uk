@@ -24,7 +24,7 @@ class PlexView(LoginRequiredMixin, TemplateView):
 
     def post(self, request):
         term = json.loads(request.body)["term"]
-        res = tpb.search(term)
+        res = tpb.search_json(term)
         return JsonResponse({"term": term, "rows": res})
 
 
