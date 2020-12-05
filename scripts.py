@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-from subprocess import run as _run()
+from subprocess import run as _run
 from threading import Thread
 
 def run(command):
-    _run(commmand.split())
+    _run(command.split())
 
 def postgresql():
     run("sudo service postgresql start")
@@ -18,7 +18,7 @@ def django():
 
 
 def django_prod():
-    run("uwsgi --http :8000 --module app.wsgi --enable-threads")
+    run("uwsgi --socket :8001 --module app.wsgi --threads 4 --chmod-socket=666")
 
 
 def webpack():
