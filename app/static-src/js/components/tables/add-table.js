@@ -7,11 +7,13 @@ export class AddTable extends BaseTable {
     return html`
       <div class="grid">
         ${this.rows.map((row) => {
+          console.log("here")
+          console.log(row)
           return html`
             <add-row
-              file-name=${row[0]}
-              seeds=${row[1].seeds}
-              magnet=${row[1].link}
+              file-name=${row[1].name}
+              seeds=${row[1].seeders}
+              magnet=${row[1].magnet}
             ></add-row>
           `;
         })}

@@ -19,7 +19,6 @@ qbittorrent-api = "*"
 black = "==20.8b1"
 beautifulsoup4 = "^4.9.3"
 the-python-bay = "^1.1.9"
-uWSGI = "^2.0.19"
 certbot-django = "^0.2.0"
 asymmetric-jwt-auth = "^0.5.0"
 

@@ -8,4 +8,4 @@ DATABASES = {
         "PORT": "5433",
     }
 }
-q
+
