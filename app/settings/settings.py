@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     'certbot_django.server',
+    'asymmetric_jwt_auth',
     "api",
     "app",
 ]
@@ -45,6 +46,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'asymmetric_jwt_auth.middleware.JWTAuthMiddleware',
 ]
 
 TEMPLATES = [
