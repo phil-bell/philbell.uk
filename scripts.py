@@ -2,8 +2,10 @@
 from subprocess import run as _run
 from threading import Thread
 
+
 def run(command):
     _run(command.split())
+
 
 def postgresql():
     run("sudo service postgresql start")
@@ -33,6 +35,25 @@ def migrate():
 def format():
     run("black . --line-length 99")
     run("npm run prettier")
+
+
+def git():
+    run("git pull")
+
+
+def nginx():
+    run("sudo /etc/init.d/nginx restart")
+
+
+def collectstatic():
+    run("python manage.py collectstatic -v 3")
+
+
+def deploy():
+    git()
+    migrtate()
+    collectstatic()
+    nginx()
 
 
 def start():

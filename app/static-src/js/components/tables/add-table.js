@@ -7,8 +7,6 @@ export class AddTable extends BaseTable {
     return html`
       <div class="grid">
         ${this.rows.map((row) => {
-          console.log("here")
-          console.log(row)
           return html`
             <add-row
               file-name=${row[1].name}

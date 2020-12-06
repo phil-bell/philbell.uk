@@ -24,6 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 app/settings/local.py
+app/staticfiles
+app/static/js/main.bundle.js
 
 nohup.out
 
