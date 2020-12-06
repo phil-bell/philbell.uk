@@ -51,7 +51,7 @@ def collectstatic():
 
 def deploy_prod():
     git()
-    migrtate()
+    migrate()
     collectstatic()
     nginx()
 
