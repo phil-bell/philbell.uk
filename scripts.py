@@ -49,7 +49,7 @@ def collectstatic():
     run("python manage.py collectstatic -v 3")
 
 
-def deploy():
+def deploy_prod():
     git()
     migrtate()
     collectstatic()

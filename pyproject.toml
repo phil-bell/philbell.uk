@@ -32,6 +32,7 @@ start = "scripts:start"
 migrate = "scripts:migrate"
 format = "scripts:format"
 start_prod = "scripts:start_prod"
+deploy_prod = "scripts:deploy_prod"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
