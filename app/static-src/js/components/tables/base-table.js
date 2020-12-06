@@ -30,7 +30,6 @@ export class BaseTable extends LitElement {
   }
 
   updateTable(results) {
-    console.log(results)
     this.rows = results.rows;
   }
 
