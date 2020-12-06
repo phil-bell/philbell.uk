@@ -29,6 +29,8 @@ app/static/js/main.bundle.js
 
 nohup.out
 
+certbot_django_id_rsa_philbelluk
+
 __pycache__
 *.pyc
 static/js/*
