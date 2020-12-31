@@ -69,7 +69,7 @@ export class LoginForm extends LitElement {
 
   async login(e) {
     e.preventDefault();
-    await fetch(`/api/login/`, {
+    await fetch(window.location, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -84,7 +84,6 @@ export class LoginForm extends LitElement {
       .then((response) => {
         if (response.status == 200) {
           this.authenticated = true;
-          document.querySelector("toast-card").show("login successful");
           window.location.reload();
         } else {
           this.authenticated = false;
@@ -118,9 +117,6 @@ export class LoginForm extends LitElement {
         </login-input>
         <button type="submit">login</button>
       </form>
-      <div class="logout-form__countainer" .hidden=${!this.authenticated}>
-        <button @click=${this.logout}>logout</button>
-      </div>
     `;
   }
 }

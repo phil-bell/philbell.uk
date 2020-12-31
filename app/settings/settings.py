@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from sys import platform
+from django.urls import reverse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -123,6 +124,8 @@ QB_USER = "admin"
 QB_PORT = "8080"
 QB_HOST = "localhost"
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'app:plex'
 
 if platform.startswith("linux"):
     from .linux import *

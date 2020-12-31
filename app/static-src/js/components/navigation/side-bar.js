@@ -5,9 +5,13 @@ import "../inputs/toggle-input";
 export class SideBar extends LitElement {
   static get styles() {
     return css`
+      :host {
+        width: 0;
+      }
       body {
         margin: 0;
         padding: 0;
+        width: 0;
         background: var(--primary-color);
         color: var(--secondary-color);
         font-family: var(--font-family);
@@ -117,6 +121,11 @@ export class SideBar extends LitElement {
       .menu__toggle input:checked ~ div {
         transform: none;
       }
+      
+      .menu__list toggle-input{
+        margin-top: auto;
+      }
+
     `;
   }
 
@@ -161,9 +170,6 @@ export class SideBar extends LitElement {
                 return html`<a href="${item.url}"><li>${item.name}</li></a>`;
               }
             })}
-            <login-form
-              .authenticated=${this.navConfig.authenticated}
-            ></login-form>
             <toggle-input></toggle-input>
           </div>
         </div>

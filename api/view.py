@@ -2,7 +2,6 @@ from django.conf import settings
 from rest_framework.views import APIView
 from django.http.response import JsonResponse
 import qbittorrentapi
-from django.contrib.auth import authenticate, logout, login
 from django.urls import reverse
 
 
@@ -33,6 +32,16 @@ class NavConfig(APIView):
                         "url": reverse("app:manage"),
                         "show": request.user.is_authenticated,
                     },
+                    {
+                        "name": "logout",
+                        "url": reverse("app:logout"),
+                        "show": request.user.is_authenticated
+                    },
+                    {
+                        "name": "login",
+                        "url": reverse("app:login"),
+                        "show": not request.user.is_authenticated
+                    }
                 ],
                 "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
             },
@@ -61,22 +70,6 @@ class ProgressList(TorrentView):
                 ]
             }
         )
-
-
-class Login(APIView):
-    def post(self, request):
-        user = authenticate(username=request.data["username"], password=request.data["password"])
-        if user:
-            login(request, user)
-            return JsonResponse(status=200, data={})
-        return JsonResponse(status=401, data={})
-
-
-class Logout(APIView):
-    def get(self, request):
-        logout(request)
-        return JsonResponse(status=200, data={})
-
 
 class Authenticated(APIView):
     def get(self, request):
