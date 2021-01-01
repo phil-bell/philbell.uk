@@ -124,8 +124,9 @@ QB_USER = "admin"
 QB_PORT = "8080"
 QB_HOST = "localhost"
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'app:add'
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "app:add"
+LOGOUT_REDIRECT_URL = "app:login"
 
 if platform.startswith("linux"):
     from .linux import *

@@ -7,7 +7,7 @@ export class SearchInput extends LitElement {
       :host {
         width: 100%;
         display: flex;
-        justify-content: start;      
+        justify-content: start;
       }
       .search__container {
         width: 100%;

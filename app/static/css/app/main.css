@@ -97,7 +97,7 @@ img:hover {
   padding: 0;
 }
 
-.login-form__form{
+.login-form__form {
   display: flex;
   flex-direction: column;
   height: 250px;
@@ -105,17 +105,17 @@ img:hover {
   margin: auto;
 }
 
-.login-form__form [for="id_username"]{
+.login-form__form [for="id_username"] {
   overflow: hidden;
   width: 74px;
 }
 
-.login-form__form [for="id_password"]{
+.login-form__form [for="id_password"] {
   overflow: hidden;
   width: 71px;
 }
 
-.login-form__form input{
+.login-form__form input {
   margin: 5px 0 10px 0;
   font-size: 16px;
   font-family: var(--font-family);
@@ -137,10 +137,10 @@ img:hover {
   outline: none;
 }
 
-.login-form__form [type="submit"]{
+.login-form__form [type="submit"] {
   border: 0;
 }
 
-.login-form__form label{
+.login-form__form label {
   text-transform: lowercase;
 }

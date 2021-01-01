@@ -113,7 +113,7 @@ export class SideBar extends LitElement {
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background-color 1000ms linear;
       }
-      @media only screen and (max-width: 725px){
+      @media only screen and (max-width: 725px) {
         .menu__list {
           display: grid;
           grid-template-columns: 1fr;
@@ -133,11 +133,10 @@ export class SideBar extends LitElement {
       .menu__toggle input:checked ~ div {
         transform: none;
       }
-      
-      .menu__list toggle-input{
+
+      .menu__list toggle-input {
         margin-top: auto;
       }
-
     `;
   }
 

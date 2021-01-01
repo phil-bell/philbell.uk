@@ -35,13 +35,13 @@ class NavConfig(APIView):
                     {
                         "name": "logout",
                         "url": reverse("app:logout"),
-                        "show": request.user.is_authenticated
+                        "show": request.user.is_authenticated,
                     },
                     {
                         "name": "login",
                         "url": reverse("app:login"),
-                        "show": not request.user.is_authenticated
-                    }
+                        "show": not request.user.is_authenticated,
+                    },
                 ],
                 "authenticated": request.user.is_authenticated,  # TODO make a dedicated authenticate api endpoint
             },
@@ -70,6 +70,7 @@ class ProgressList(TorrentView):
                 ]
             }
         )
+
 
 class Authenticated(APIView):
     def get(self, request):

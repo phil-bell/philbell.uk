@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit-element";
 import "../inputs/search-input";
 import "../tables/add-table";
 
-export class addForm extends LitElement {
+export class AddForm extends LitElement {
   static get styles() {
     return css`
       :host {
@@ -27,4 +27,4 @@ export class addForm extends LitElement {
   }
 }
 
-customElements.define("add-form", addForm);
+customElements.define("add-form", AddForm);

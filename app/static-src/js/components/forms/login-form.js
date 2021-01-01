@@ -108,9 +108,7 @@ export class LoginForm extends LitElement {
 
   render() {
     return html`
-      <form class="login-form__container" .hidden=${
-        this.authenticated
-      } @submit=${this.login}>
+      <form class="login-form__container" .hidden=${this.authenticated} @submit=${this.login}>
         <login-input id="username" name="username" label="username" type="text" />
         </login-input>
         <login-input id="password" name="password" type="password" label="password" />

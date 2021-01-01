@@ -17,7 +17,7 @@ class HomePageView(TemplateView):
     template_name = "home.html"
 
 
-class addView(LoginRequiredMixin, TemplateView):
+class AddView(LoginRequiredMixin, TemplateView):
     template_name = "add.html"
     login_url = "login/"
     redirect_field_name = "app:home"
@@ -31,7 +31,7 @@ class addView(LoginRequiredMixin, TemplateView):
         return JsonResponse({"term": term, "rows": res})
 
 
-class progressView(LoginRequiredMixin, TemplateView):
+class ProgressView(LoginRequiredMixin, TemplateView):
     template_name = "progress.html"
     login_url = "login/"
     redirect_field_name = "app:home"
@@ -50,24 +50,3 @@ class ResumeView(TemplateView):
 class Login(LoginView):
     template_name = "login.html"
     redirect_authenticated_user = True
-
-    # def get(self, request):
-    #     if request.user.is_authenticated:
-    #         return redirect(reverse("app:add"))
-    #     return super().get(request)
-        
-    # def post(self, request):
-    #     form = AuthenticationForm(request)
-    #     print(form.is_valid())
-    #     print(authenticate(username=form.username, password=form.password))
-    #     if form.is_valid() and authenticate(username=form.username, password=form.password):
-    #         login(request, user)
-    #         return redirect(reverse("app:add"))
-    #     print(form.errors)
-    #     return HttpResponse(status=401)
-
-
-class Logout(View):
-    def get(self, request):
-        logout(request)
-        return redirect(reverse("app:login"))
