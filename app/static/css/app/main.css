@@ -23,11 +23,13 @@ body {
   color: var(--secondary-color);
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   font-weight: 500;
   overflow: hidden;
   -webkit-transition: background-color 1000ms linear;
-  -ms-transition: background-color 1000ms linear;
+  -o-transition: background-color 1000ms linear;
   transition: background-color 1000ms linear;
 }
 
@@ -58,8 +60,12 @@ p {
 }
 
 a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 img {
@@ -67,7 +73,6 @@ img {
   width: 100px;
   top: 0px;
   -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   position: relative;
@@ -80,6 +85,8 @@ img:hover {
 
 .content--center {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -90,6 +97,8 @@ img:hover {
   position: absolute;
   width: 100%;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -100,6 +109,59 @@ img:hover {
 .login-form__form {
   display: flex;
   flex-direction: column;
+  height: 250px;
+  width: 300px;
+  margin: auto;
+}
+
+.login-form__form [for="id_username"] {
+  overflow: hidden;
+  width: 74px;
+}
+
+.login-form__form [for="id_password"] {
+  overflow: hidden;
+  width: 71px;
+}
+
+.login-form__form input {
+  margin: 5px 0 10px 0;
+  font-size: 16px;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  height: 35px;
+  padding: 0 10px;
+}
+
+.login-form__form input:hover:not(:focus) {
+  color: var(--hover-color);
+}
+
+.login-form__form input:focus {
+  border: 1px solid var(--hover-color);
+  outline: none;
+}
+
+.login-form__form [type="submit"] {
+  border: 0;
+}
+
+.login-form__form label {
+  text-transform: lowercase;
+}
+
+.login-form__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   height: 250px;
   width: 300px;
   margin: auto;

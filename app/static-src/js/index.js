@@ -1,3 +1,4 @@
+import "regenerator-runtime/runtime.js";
 import "./components/navigation/side-bar.js";
 import "./components/inputs/search-input.js";
 import "./components/forms/add-form.js";
