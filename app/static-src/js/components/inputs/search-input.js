@@ -63,7 +63,7 @@ export class SearchInput extends LitElement {
 
       @media only screen and (max-width: 725px) {
         .search__input {
-          width: 80%;
+          width: 65%;
         }
         .search__input:focus ~ .search__label {
           left: 0;

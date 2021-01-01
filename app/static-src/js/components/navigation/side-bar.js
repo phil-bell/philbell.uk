@@ -7,6 +7,7 @@ export class SideBar extends LitElement {
     return css`
       :host {
         width: 0;
+        z-index: 2;
       }
       body {
         margin: 0;
@@ -102,7 +103,6 @@ export class SideBar extends LitElement {
         width: auto;
         height: 85vh;
         margin: -100px 0 0 -50px;
-        padding: 50px;
         padding-top: 125px;
         background: var(--primary-color);
         list-style-type: none;
@@ -111,6 +111,16 @@ export class SideBar extends LitElement {
         transform: translate(-100%, 0);
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background-color 1000ms linear;
+      }
+      @media only screen and (max-width: 725px){
+        .menu__list {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-auto-rows: 90px;
+          place-content: center;
+          place-items: center;
+          width: 105vw;
+        }
       }
 
       .menu__list li {

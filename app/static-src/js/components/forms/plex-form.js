@@ -7,7 +7,7 @@ export class PlexForm extends LitElement {
     return css`
       :host {
         width: 100%;
-        padding: 30px 26px 0 26px;
+        padding: 31px 0px 0px;
       }
       .plex-form__container {
         display: flex;
