@@ -17,8 +17,8 @@ class HomePageView(TemplateView):
     template_name = "home.html"
 
 
-class PlexView(LoginRequiredMixin, TemplateView):
-    template_name = "plex.html"
+class addView(LoginRequiredMixin, TemplateView):
+    template_name = "add.html"
     login_url = "login/"
     redirect_field_name = "app:home"
 
@@ -31,8 +31,8 @@ class PlexView(LoginRequiredMixin, TemplateView):
         return JsonResponse({"term": term, "rows": res})
 
 
-class ManageView(LoginRequiredMixin, TemplateView):
-    template_name = "manage.html"
+class progressView(LoginRequiredMixin, TemplateView):
+    template_name = "progress.html"
     login_url = "login/"
     redirect_field_name = "app:home"
 
@@ -53,7 +53,7 @@ class Login(LoginView):
 
     # def get(self, request):
     #     if request.user.is_authenticated:
-    #         return redirect(reverse("app:plex"))
+    #         return redirect(reverse("app:add"))
     #     return super().get(request)
         
     # def post(self, request):
@@ -62,7 +62,7 @@ class Login(LoginView):
     #     print(authenticate(username=form.username, password=form.password))
     #     if form.is_valid() and authenticate(username=form.username, password=form.password):
     #         login(request, user)
-    #         return redirect(reverse("app:plex"))
+    #         return redirect(reverse("app:add"))
     #     print(form.errors)
     #     return HttpResponse(status=401)
 

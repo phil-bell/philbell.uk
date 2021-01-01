@@ -103,6 +103,7 @@ export class SideBar extends LitElement {
         width: auto;
         height: 85vh;
         margin: -100px 0 0 -50px;
+        padding-left: 50px;
         padding-top: 125px;
         background: var(--primary-color);
         list-style-type: none;
@@ -120,6 +121,7 @@ export class SideBar extends LitElement {
           place-content: center;
           place-items: center;
           width: 105vw;
+          padding-left: 0;
         }
       }
 

@@ -125,7 +125,7 @@ QB_PORT = "8080"
 QB_HOST = "localhost"
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'app:plex'
+LOGIN_REDIRECT_URL = 'app:add'
 
 if platform.startswith("linux"):
     from .linux import *

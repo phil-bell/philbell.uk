@@ -24,12 +24,12 @@ class NavConfig(APIView):
                     {"name": "home", "url": reverse("app:home"), "show": True},
                     {
                         "name": "add",
-                        "url": reverse("app:plex"),
+                        "url": reverse("app:add"),
                         "show": request.user.is_authenticated,
                     },
                     {
                         "name": "progress",
-                        "url": reverse("app:manage"),
+                        "url": reverse("app:progress"),
                         "show": request.user.is_authenticated,
                     },
                     {
