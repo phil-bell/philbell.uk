@@ -6,6 +6,9 @@
   "author": "philhabell <philhabell@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "*",
+    "@babel/preset-env": "*",
+    "babel-loader": "*",
     "js-cookie": "*",
     "lit-element": "*",
     "prettier": "*",
