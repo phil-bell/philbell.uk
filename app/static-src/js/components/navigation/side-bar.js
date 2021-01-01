@@ -1,5 +1,4 @@
 import { LitElement, html, css } from "lit-element";
-import "../forms/login-form";
 import "../inputs/toggle-input";
 
 export class SideBar extends LitElement {
