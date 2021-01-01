@@ -1,13 +1,17 @@
 import { LitElement, html, css } from "lit-element";
-import "../forms/login-form";
 import "../inputs/toggle-input";
 
 export class SideBar extends LitElement {
   static get styles() {
     return css`
+      :host {
+        width: 0;
+        z-index: 2;
+      }
       body {
         margin: 0;
         padding: 0;
+        width: 0;
         background: var(--primary-color);
         color: var(--secondary-color);
         font-family: var(--font-family);
@@ -98,7 +102,7 @@ export class SideBar extends LitElement {
         width: auto;
         height: 85vh;
         margin: -100px 0 0 -50px;
-        padding: 50px;
+        padding-left: 50px;
         padding-top: 125px;
         background: var(--primary-color);
         list-style-type: none;
@@ -108,6 +112,17 @@ export class SideBar extends LitElement {
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background-color 1000ms linear;
       }
+      @media only screen and (max-width: 725px) {
+        .menu__list {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-auto-rows: 90px;
+          place-content: center;
+          place-items: center;
+          width: 105vw;
+          padding-left: 0;
+        }
+      }
 
       .menu__list li {
         padding: 10px 0;
@@ -116,6 +131,10 @@ export class SideBar extends LitElement {
 
       .menu__toggle input:checked ~ div {
         transform: none;
+      }
+
+      .menu__list toggle-input {
+        margin-top: auto;
       }
     `;
   }
@@ -161,9 +180,6 @@ export class SideBar extends LitElement {
                 return html`<a href="${item.url}"><li>${item.name}</li></a>`;
               }
             })}
-            <login-form
-              .authenticated=${this.navConfig.authenticated}
-            ></login-form>
             <toggle-input></toggle-input>
           </div>
         </div>

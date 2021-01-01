@@ -35,4 +35,4 @@ __pycache__
 *.pyc
 static/js/*
 downloads/*
-.vscode/settings.json
+.vscode

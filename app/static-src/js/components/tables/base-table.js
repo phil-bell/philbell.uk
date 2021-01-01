@@ -8,6 +8,7 @@ export class BaseTable extends LitElement {
         justify-content: center;
         height: 90vh;
         overflow-y: scroll;
+        padding: 0 5px;
       }
       .grid {
         display: flex;

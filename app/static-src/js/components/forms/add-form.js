@@ -2,13 +2,14 @@ import { LitElement, html, css } from "lit-element";
 import "../inputs/search-input";
 import "../tables/add-table";
 
-export class PlexForm extends LitElement {
+export class AddForm extends LitElement {
   static get styles() {
     return css`
       :host {
         width: 100%;
+        padding: 31px 0px 0px;
       }
-      .plex-form__container {
+      .add-form__container {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -19,11 +20,11 @@ export class PlexForm extends LitElement {
 
   render() {
     return html`
-      <div class="plex-form__container">
+      <div class="add-form__container">
         <search-input></search-input>
       </div>
     `;
   }
 }
 
-customElements.define("plex-form", PlexForm);
+customElements.define("add-form", AddForm);
