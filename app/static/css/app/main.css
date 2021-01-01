@@ -88,13 +88,8 @@ img:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
   padding: 0;
 }
 
@@ -105,15 +100,58 @@ img:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
   margin: 0;
   padding: 0;
+}
+
+.login-form__form {
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  width: 300px;
+  margin: auto;
+}
+
+.login-form__form [for="id_username"] {
+  overflow: hidden;
+  width: 74px;
+}
+
+.login-form__form [for="id_password"] {
+  overflow: hidden;
+  width: 71px;
+}
+
+.login-form__form input {
+  margin: 5px 0 10px 0;
+  font-size: 16px;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  height: 35px;
+  padding: 0 10px;
+}
+
+.login-form__form input:hover:not(:focus) {
+  color: var(--hover-color);
+}
+
+.login-form__form input:focus {
+  border: 1px solid var(--hover-color);
+  outline: none;
+}
+
+.login-form__form [type="submit"] {
+  border: 0;
+}
+
+.login-form__form label {
+  text-transform: lowercase;
 }
 
 .login-form__form {
