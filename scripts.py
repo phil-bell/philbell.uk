@@ -46,7 +46,7 @@ def nginx():
 
 
 def collectstatic():
-    run("python manage.py collectstatic -v 3")
+    run("python manage.py collectstatic --noinput -v 3")
 
 
 def npm():
