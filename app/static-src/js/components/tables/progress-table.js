@@ -1,9 +1,17 @@
-import { html } from "lit-element";
+import { html, css } from "lit-element";
 import { BaseTable } from "./base-table";
 import "./progress-row";
 import "../progress/loading-state";
 
 export class ProgressTable extends BaseTable {
+  static get styles() {
+    return css`
+      :host{
+        padding-top: 84px;
+        padding-left: 19px;
+      }
+    `;
+  }
   async getList() {
     await fetch(`/api/progress-list`)
       .then((response) => response.json())
