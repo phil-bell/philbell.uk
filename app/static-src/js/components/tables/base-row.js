@@ -5,9 +5,9 @@ export class BaseTableRow extends LitElement {
   static get styles() {
     return css`
       :host {
+        display: flex;
         display: -webkit-box;
         display: -ms-flexbox;
-        display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
