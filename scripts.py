@@ -50,6 +50,7 @@ def collectstatic():
 
 def npm():
     run("npm i")
+    run("npm run build")
 
 def poetry():
     run("poetry update")
