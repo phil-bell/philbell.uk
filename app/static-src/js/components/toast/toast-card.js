@@ -15,6 +15,7 @@ export class ToastCard extends LitElement {
         transition: 0.5s ease all;
         -moz-transition: 0.5s ease all;
         -webkit-transition: 0.5s ease all;
+        background: var(--primary-color);
       }
     `;
   }

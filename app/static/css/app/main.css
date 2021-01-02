@@ -210,11 +210,11 @@ img:hover {
 }
 
 .login-form__form input:focus {
-  border: 1px solid var(--hover-color);
   outline: none;
 }
 
 .login-form__form [type="submit"] {
+  -webkit-appearance: none;
   border: 0;
 }
 
