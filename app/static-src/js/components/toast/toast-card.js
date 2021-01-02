@@ -7,8 +7,8 @@ export class ToastCard extends LitElement {
         max-width: 230px;
         position: absolute;
         padding: 10px;
-        right: var(--right, -250px);
-        bottom: 10px;
+        right: 10px;
+        bottom: var(--bottom, -100px);
         border: 1px solid;
         border-radius: 5px;
         -o-transition: 0.5s ease all;
@@ -30,19 +30,19 @@ export class ToastCard extends LitElement {
     super();
     this.message = "";
     this.type = "";
-    this.showRight = "10px";
-    this.hideRight = "-250px";
+    this.showBottom = "10px";
+    this.hideBottom = "-100px";
   }
 
   show(message = false) {
     if (message) {
       this.message = message;
     }
-    this.style.setProperty("--right", this.showRight);
+    this.style.setProperty("--bottom", this.showBottom);
   }
 
   hide() {
-    this.style.setProperty("--right", this.hideRight);
+    this.style.setProperty("--bottom", this.hideBottom);
   }
 
   render() {
