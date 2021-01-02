@@ -4,14 +4,23 @@ export class BaseTable extends LitElement {
   static get styles() {
     return css`
       :host {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         height: 90vh;
         overflow-y: scroll;
         padding: 0 5px;
       }
       .grid {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
       }
     `;

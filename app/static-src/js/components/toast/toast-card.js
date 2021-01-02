@@ -11,6 +11,7 @@ export class ToastCard extends LitElement {
         bottom: 10px;
         border: 1px solid;
         border-radius: 5px;
+        -o-transition: 0.5s ease all;
         transition: 0.5s ease all;
         -moz-transition: 0.5s ease all;
         -webkit-transition: 0.5s ease all;

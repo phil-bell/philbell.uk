@@ -6,12 +6,21 @@ export class SearchInput extends LitElement {
     return css`
       :host {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: start;
       }
       .search__container {
         width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
       }
       .search__label {
@@ -20,6 +29,7 @@ export class SearchInput extends LitElement {
         bottom: 27px;
         margin: auto;
         left: 0;
+        -o-transition: 0.2s ease all;
         transition: 0.2s ease all;
         -moz-transition: 0.2s ease all;
         -webkit-transition: 0.2s ease all;
@@ -36,6 +46,8 @@ export class SearchInput extends LitElement {
         width: 500px;
         text-align: center;
         margin: auto;
+        -webkit-transition: border-color 0.25s ease-in-out;
+        -o-transition: border-color 0.25s ease-in-out;
         transition: border-color 0.25s ease-in-out;
       }
       .search__input:hover:not(:focus) {

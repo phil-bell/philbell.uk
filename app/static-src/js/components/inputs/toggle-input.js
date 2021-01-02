@@ -40,12 +40,14 @@ export class ToggleInput extends LitElement {
       input[type="checkbox"].switch_3:checked + svg.checkbox .is_checked {
         opacity: 1;
         -webkit-transform: translateX(0) rotate(0deg);
+        -ms-transform: translateX(0) rotate(0deg);
         transform: translateX(0) rotate(0deg);
       }
 
       input[type="checkbox"].switch_3:checked + svg.checkbox .is_unchecked {
         opacity: 0;
         -webkit-transform: translateX(-200%) rotate(180deg);
+        -ms-transform: translateX(-200%) rotate(180deg);
         transform: translateX(-200%) rotate(180deg);
       }
 
@@ -63,10 +65,13 @@ export class ToggleInput extends LitElement {
         opacity: 0;
         fill: #fcba03;
         -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
         transform-origin: 50% 50%;
         -webkit-transform: translateX(200%) rotate(45deg);
+        -ms-transform: translateX(200%) rotate(45deg);
         transform: translateX(200%) rotate(45deg);
         -webkit-transition: all 0.35s;
+        -o-transition: all 0.35s;
         transition: all 0.35s;
       }
 
@@ -74,10 +79,13 @@ export class ToggleInput extends LitElement {
         opacity: 1;
         fill: #fff;
         -webkit-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
         transform-origin: 50% 50%;
         -webkit-transform: translateX(0) rotate(0deg);
+        -ms-transform: translateX(0) rotate(0deg);
         transform: translateX(0) rotate(0deg);
         -webkit-transition: all 0.35s;
+        -o-transition: all 0.35s;
         transition: all 0.35s;
       }
 

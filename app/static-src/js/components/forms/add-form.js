@@ -10,7 +10,11 @@ export class AddForm extends LitElement {
         padding: 31px 0px 0px;
       }
       .add-form__container {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
         width: 100%;
         padding: 10px;

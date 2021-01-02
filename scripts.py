@@ -48,12 +48,15 @@ def nginx():
 def collectstatic():
     run("python manage.py collectstatic -v 3")
 
+
 def npm():
     run("npm i")
     run("npm run build")
 
+
 def poetry():
     run("poetry update")
+
 
 def deploy_prod():
     git()

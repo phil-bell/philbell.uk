@@ -12,6 +12,8 @@ export class ProgressBar extends LitElement {
         padding: 3px;
         border-radius: 15px;
         border: 1px solid var(--secondary-color);
+        -webkit-transition: width 500ms ease-in-out;
+        -o-transition: width 500ms ease-in-out;
         transition: width 500ms ease-in-out;
       }
 
@@ -21,6 +23,8 @@ export class ProgressBar extends LitElement {
         background-color: var(--hover-color);
         border-radius: 25px;
         width: var(--progress);
+        -webkit-transition: width 500ms ease-in-out;
+        -o-transition: width 500ms ease-in-out;
         transition: width 500ms ease-in-out;
       }
     `;

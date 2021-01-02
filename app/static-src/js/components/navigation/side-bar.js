@@ -24,6 +24,8 @@ export class SideBar extends LitElement {
         left: 25px;
         z-index: 1;
         -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
         user-select: none;
       }
 
@@ -34,6 +36,8 @@ export class SideBar extends LitElement {
       .menu__toggle a {
         text-decoration: none;
         color: var(--secondary-color);
+        -webkit-transition: color 0.3s ease;
+        -o-transition: color 0.3s ease;
         transition: color 0.3s ease;
       }
 
@@ -63,9 +67,22 @@ export class SideBar extends LitElement {
         background: var(--secondary-color);
         border-radius: 3px;
         z-index: 1;
+        -webkit-transform-origin: 4px 0px;
+        -ms-transform-origin: 4px 0px;
         transform-origin: 4px 0px;
+        -webkit-transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          opacity 0.55s ease,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          opacity 0.55s ease,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        -o-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
       }
 
       .menu__toggle input:hover > span {
@@ -73,30 +90,47 @@ export class SideBar extends LitElement {
       }
 
       .menu__toggle span:first-child {
+        -webkit-transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
         transform-origin: 0% 0%;
       }
 
       .menu__toggle span:nth-last-child(2) {
+        -webkit-transform-origin: 0% 100%;
+        -ms-transform-origin: 0% 100%;
         transform-origin: 0% 100%;
       }
 
       .menu__toggle input:checked ~ span {
         opacity: 1;
+        -webkit-transform: rotate(45deg) translate(-2px, -1px);
+        -ms-transform: rotate(45deg) translate(-2px, -1px);
         transform: rotate(45deg) translate(-2px, -1px);
       }
 
       .menu__toggle input:checked ~ span:nth-last-child(3) {
         opacity: 0;
+        -webkit-transform: rotate(0deg) scale(0.2, 0.2);
+        -ms-transform: rotate(0deg) scale(0.2, 0.2);
         transform: rotate(0deg) scale(0.2, 0.2);
       }
 
       .menu__toggle input:checked ~ span:nth-last-child(2) {
+        -webkit-transform: rotate(-45deg) translate(0, -1px);
+        -ms-transform: rotate(-45deg) translate(0, -1px);
         transform: rotate(-45deg) translate(0, -1px);
       }
 
       .menu__list {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         position: absolute;
         width: auto;
@@ -107,14 +141,29 @@ export class SideBar extends LitElement {
         background: var(--primary-color);
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
+        -webkit-transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
         transform-origin: 0% 0%;
+        -webkit-transform: translate(-100%, 0);
+        -ms-transform: translate(-100%, 0);
         transform: translate(-100%, 0);
+        -webkit-transition: background-color 1000ms linear,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        transition: background-color 1000ms linear,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        -o-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          background-color 1000ms linear;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background-color 1000ms linear;
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          background-color 1000ms linear,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
       }
       @media only screen and (max-width: 725px) {
         .menu__list {
+          display: -ms-grid;
           display: grid;
+          -ms-grid-columns: 1fr;
           grid-template-columns: 1fr;
           grid-auto-rows: 90px;
           place-content: center;
@@ -130,6 +179,8 @@ export class SideBar extends LitElement {
       }
 
       .menu__toggle input:checked ~ div {
+        -webkit-transform: none;
+        -ms-transform: none;
         transform: none;
       }
 
