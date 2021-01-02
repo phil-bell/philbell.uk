@@ -8,11 +8,12 @@ export class ProgressTable extends BaseTable {
     return [
       super.styles,
       css`
-      :host{
-        padding-top: 84px;
-        padding-left: 19px;
-      }
-    `];
+        :host {
+          padding-top: 84px;
+          padding-left: 19px;
+        }
+      `,
+    ];
   }
   async getList() {
     await fetch(`/api/progress-list`)

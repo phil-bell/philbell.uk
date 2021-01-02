@@ -7,6 +7,7 @@ export class SideBar extends LitElement {
       :host {
         width: 0;
         z-index: 2;
+        height: 100%;
       }
       body {
         margin: 0;
@@ -15,6 +16,11 @@ export class SideBar extends LitElement {
         background: var(--primary-color);
         color: var(--secondary-color);
         font-family: var(--font-family);
+        display: 100%;
+      }
+
+      nav {
+        height: 100%;
       }
 
       .menu__toggle {
@@ -27,6 +33,7 @@ export class SideBar extends LitElement {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        height: 100%;
       }
 
       .menu__toggle input:hover ~ span {
@@ -78,6 +85,12 @@ export class SideBar extends LitElement {
           -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
         -o-transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+        -webkit-transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          opacity 0.55s ease,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+        transition: background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+          opacity 0.55s ease,
+          -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
           background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
         transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
@@ -122,22 +135,15 @@ export class SideBar extends LitElement {
       }
 
       .menu__list {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: start;
-        -ms-flex-pack: start;
-        justify-content: flex-start;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
+        display: -ms-grid;
+        display: grid;
+        height: 100%;
+        grid-template-rows: repeat(auto-fit, 45px);
         position: absolute;
         width: auto;
-        height: 85vh;
-        margin: -100px 0 0 -50px;
+        height: 100%;
+        margin: 0 0 0 -50px;
         padding-left: 50px;
-        padding-top: 125px;
         background: var(--primary-color);
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
@@ -159,19 +165,6 @@ export class SideBar extends LitElement {
           background-color 1000ms linear,
           -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
       }
-      @media only screen and (max-width: 725px) {
-        .menu__list {
-          display: -ms-grid;
-          display: grid;
-          -ms-grid-columns: 1fr;
-          grid-template-columns: 1fr;
-          grid-auto-rows: 90px;
-          place-content: center;
-          place-items: center;
-          width: 105vw;
-          padding-left: 0;
-        }
-      }
 
       .menu__list li {
         padding: 10px 0;
@@ -185,7 +178,27 @@ export class SideBar extends LitElement {
       }
 
       .menu__list toggle-input {
-        margin-top: auto;
+        position: absolute;
+        left: 28px;
+        bottom: 100px;
+      }
+      @media only screen and (max-width: 725px) {
+        .menu__list {
+          display: -ms-grid;
+          display: grid;
+          margin: -100px 0 0 -50px;
+          -ms-grid-columns: 1fr;
+          grid-template-columns: 1fr;
+          grid-template-rows: repeat(auto-fit, 90px);
+          place-content: center;
+          place-items: center;
+          width: 105vw;
+          padding-left: 0;
+          padding-top: 0;
+        }
+        .menu__list toggle-input {
+          position: unset;
+        }
       }
     `;
   }

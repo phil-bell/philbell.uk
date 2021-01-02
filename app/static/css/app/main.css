@@ -18,7 +18,12 @@
   border-radius: 20px;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   background-color: var(--primary-color);
   color: var(--secondary-color);
   font-family: var(--font-family);
