@@ -5,12 +5,14 @@ import "../progress/loading-state";
 
 export class ProgressTable extends BaseTable {
   static get styles() {
-    return css`
+    return [
+      super.styles(),
+      css`
       :host{
         padding-top: 84px;
         padding-left: 19px;
       }
-    `;
+    `];
   }
   async getList() {
     await fetch(`/api/progress-list`)
