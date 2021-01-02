@@ -6,7 +6,7 @@ import "../progress/loading-state";
 export class ProgressTable extends BaseTable {
   static get styles() {
     return [
-      super.styles(),
+      super.styles,
       css`
       :host{
         padding-top: 84px;
