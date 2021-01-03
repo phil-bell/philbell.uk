@@ -56,8 +56,28 @@ export class BaseTableRow extends LitElement {
         -o-text-overflow: ellipsis;
         text-overflow: ellipsis;
       }
+      .grid__cell--left {
+        padding: 5px;
+        -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+        overflow: hidden;
+        white-space: nowrap;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        -ms-grid-column-align: start;
+        justify-self: start;
+      }
       [open] {
         height: 80px;
+      }
+      [fit-content] {
+        height: auto;
+        overflow: visible;
+        white-space: normal;
+        -o-text-overflow: unset;
+        text-overflow: unset;
+        line-height: 20px;
       }
       .only-mobile {
         display: none;
@@ -77,11 +97,16 @@ export class BaseTableRow extends LitElement {
   constructor() {
     super();
     this.open = false;
+    this.fitContent = false;
   }
 
   static get properties() {
     return {
       open: {
+        type: Boolean,
+        attribute: "open",
+      },
+      fitContent: {
         type: Boolean,
       },
     };
