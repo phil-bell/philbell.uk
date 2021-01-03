@@ -140,7 +140,7 @@ export class AddRow extends BaseTableRow {
   async toggleRow(event) {
     this.open = !this.open;
     await fetch(
-      `http://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
+      `https://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
     )
       .then((response) => response.json())
       .then((data) => {
