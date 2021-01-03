@@ -126,6 +126,15 @@ export class SearchInput extends LitElement {
         .search__container {
           overflow: visible;
         }
+        .search__input:focus ~ .search__label{
+          display: none;
+        }
+        .search__input:not(:placeholder-shown) ~ .search__label{
+          display: none;
+        }
+        .search__button{
+          height: 38px;
+        }
       }
     `;
   }
