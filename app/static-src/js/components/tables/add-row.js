@@ -58,6 +58,11 @@ export class AddRow extends BaseTableRow {
           padding-left: 6px;
           padding-right: 15px;
         }
+        @media only screen and (max-width: 725px) {
+          input {
+            width: 74px;
+          }
+        }
       `,
     ];
   }
@@ -168,19 +173,38 @@ export class AddRow extends BaseTableRow {
       });
   }
 
+  fitContentRow(event) {
+    const formRow = event.target.parentElement.parentElement;
+    const infoRow = formRow.previousElementSibling;
+    const nameCell = infoRow.firstElementChild;
+    const row = infoRow.parentElement;
+    console.log(formRow);
+    console.log(infoRow);
+    console.log(nameCell);
+    console.log(row);
+    this.fitContent = !this.fitContent;
+  }
+
   render() {
     return html`
-      <div class="grid__row" ?open=${this.open}>
-        <div class="grid__row__info">
-          <div class="grid__cell">${this.fileName}</div>
+      <div class="grid__row" ?fit-content=${this.fitContent} ?open=${this.open}>
+        <div class="grid__row__info" ?fit-content=${this.fitContent}>
+          <div class="grid__cell" ?fit-content=${this.fitContent}>
+            ${this.fileName}
+          </div>
           <div class="grid__cell">${this.seeds}</div>
-          <div class="grid__cell">
+          <div class="grid__cell--left">
             <button @click=${this.toggleRow}>
               ${this.open ? "close" : "download"}
             </button>
           </div>
         </div>
         <div class="grid__row__form">
+          <div class="grid__cell">
+            <button @click=${this.fitContentRow}>
+              ${this.fitContent ? "less" : "more"}
+            </button>
+          </div>
           <div class="grid__cell">
             <select @change=${(e) => (this.type = e.target.value)}>
               <option>--</option>
