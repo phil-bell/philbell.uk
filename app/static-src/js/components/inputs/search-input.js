@@ -58,13 +58,14 @@ export class SearchInput extends LitElement {
         border: 1px solid var(--secondary-color);
         border-right: 0;
         border-radius: 8px 0 0 8px;
-        height: 35px;
+        height: 36px;
         width: 440px;
         text-align: center;
         -webkit-transition: border-color 0.25s ease-in-out;
         -o-transition: border-color 0.25s ease-in-out;
         transition: border-color 0.25s ease-in-out;
         overflow: hidden;
+        padding: 0;
       }
       .search__input:hover:not(:focus) {
         color: var(--hover-color);
@@ -101,7 +102,8 @@ export class SearchInput extends LitElement {
         -webkit-font-smoothing: antialiased;
         font-weight: 500;
         min-width: 74px;
-        height: 39px;
+        height: 38px;
+        padding: 0;
       }
 
       .search__button:hover {
@@ -115,11 +117,6 @@ export class SearchInput extends LitElement {
         outline: none;
       }
 
-      @supports (-webkit-touch-callout: none) {
-        .search__input {
-          height: 28px;
-        }
-      }
       @media only screen and (max-width: 725px) {
         :host {
           margin-left: 68px;
@@ -136,9 +133,6 @@ export class SearchInput extends LitElement {
         }
         .search__input:not(:placeholder-shown) ~ .search__label{
           display: none;
-        }
-        .search__button{
-          height: 38px;
         }
       }
     `;
