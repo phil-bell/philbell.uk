@@ -122,6 +122,7 @@ export class SearchInput extends LitElement {
           margin-left: 68px;
         }
         .search__input {
+          width: 100%;
           overflow: visible;
         }
         .search__container {
