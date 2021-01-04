@@ -115,6 +115,13 @@ export class SearchInput extends LitElement {
         outline: none;
       }
 
+      @media screen and (-webkit-min-device-pixel-ratio:0) {
+        select,
+        textarea,
+        input {
+          font-size: 16px;
+        }
+      }
       @media only screen and (max-width: 725px) {
         :host {
           margin-left: 68px;
