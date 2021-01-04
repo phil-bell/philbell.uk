@@ -104,6 +104,7 @@ export class SearchInput extends LitElement {
         min-width: 74px;
         height: 38px;
         padding: 0;
+        margin: 0;
       }
 
       .search__button:hover {
