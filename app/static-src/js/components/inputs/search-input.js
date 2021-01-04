@@ -115,7 +115,7 @@ export class SearchInput extends LitElement {
         outline: none;
       }
 
-      @media screen and (-webkit-min-device-pixel-ratio:0) {
+      @supports (-webkit-touch-callout: none) {
         .search__input {
           height: 28px;
         }
@@ -127,7 +127,6 @@ export class SearchInput extends LitElement {
         .search__input {
           width: 97%;
           overflow: visible;
-          height: 28px;
         }
         .search__container {
           overflow: visible;
