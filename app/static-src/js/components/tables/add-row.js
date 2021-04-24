@@ -98,6 +98,10 @@ export class AddRow extends BaseTableRow {
       autoType: {
         type: String,
       },
+      term: {
+        type: String,
+        attribute: "term"
+      }
     };
   }
 
@@ -118,7 +122,7 @@ export class AddRow extends BaseTableRow {
 
   get location() {
     if (this.type == "tv") {
-      return `${this.type}/${this.strippedFileName}/`;
+      return `${this.type}/${this.term}/`;
     }
     return `${this.type}/`;
   }
@@ -140,7 +144,7 @@ export class AddRow extends BaseTableRow {
   async toggleRow(event) {
     this.open = !this.open;
     await fetch(
-      `https://www.omdbapi.com/?apikey=691083f6&s=${this.strippedFileName}`
+      `https://www.omdbapi.com/?apikey=691083f6&s=${this.term}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -216,7 +220,7 @@ export class AddRow extends BaseTableRow {
             </select>
           </div>
           <div class="grid__cell" .hidden=${this.type !== "tv"}>
-            <input value=${this.strippedFileName} />
+            <input value=${this.term} />
           </div>
           <div class="grid__cell">
             <button @click=${this.handleDownload}>download</button>

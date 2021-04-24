@@ -39,7 +39,8 @@ export class BaseTable extends LitElement {
     };
   }
 
-  updateTable(results) {
+  updateTable(term, results) {
+    this.term = term
     this.rows = results.rows;
   }
 

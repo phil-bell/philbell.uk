@@ -8,6 +8,7 @@ authors = ["Philip Bell"]
 python = "^3.9.0"
 lxml = "==4.6.1"
 django = "*"
+cryptography = "3.1.1"
 psycopg2-binary = "*"
 typer = "*"
 djangorestframework = "*"
