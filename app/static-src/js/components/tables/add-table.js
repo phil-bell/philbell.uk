@@ -12,6 +12,7 @@ export class AddTable extends BaseTable {
               file-name=${row[1].name}
               seeds=${row[1].seeders}
               magnet=${row[1].magnet}
+              term=${this.term}
             ></add-row>
           `;
         })}

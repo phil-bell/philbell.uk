@@ -68,6 +68,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "app.wsgi.application"
 
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
 
 # Password validation2.8.5
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -128,10 +134,4 @@ LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "app:add"
 LOGOUT_REDIRECT_URL = "app:login"
 
-if platform.startswith("linux"):
-    from .linux import *
-elif platform.startswith("darwin"):
-    from .mac import *
-elif platform.startswith("win32"):
-    from .win import *
 from .local import *

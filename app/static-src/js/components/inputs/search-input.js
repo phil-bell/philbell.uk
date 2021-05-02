@@ -199,7 +199,7 @@ export class SearchInput extends LitElement {
         .then((response) => response.json())
         .then(async (data) => {
           const table = document.querySelector("add-table");
-          table.updateTable(data);
+          table.updateTable(this.value, data);
           await table.updateComplete;
           const rows = table.shadowRoot.firstElementChild.children;
           for (let row of rows) {

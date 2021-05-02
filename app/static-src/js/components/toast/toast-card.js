@@ -24,6 +24,7 @@ export class ToastCard extends LitElement {
     return {
       message: String,
       type: String,
+      persist: Boolean,
     };
   }
 
@@ -33,6 +34,7 @@ export class ToastCard extends LitElement {
     this.type = "";
     this.showBottom = "10px";
     this.hideBottom = "-100px";
+    this.persist = false;
   }
 
   show(message = false) {
@@ -40,6 +42,11 @@ export class ToastCard extends LitElement {
       this.message = message;
     }
     this.style.setProperty("--bottom", this.showBottom);
+    if (!this.persist) {
+      setTimeout(() => {
+        this.hide();
+      }, 3000);
+    }
   }
 
   hide() {
