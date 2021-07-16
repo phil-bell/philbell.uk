@@ -175,9 +175,9 @@ export class ProgressRow extends BaseTableRow {
           </div>
         </div>
         <div class="grid__row__form">
+          <div class="grid__cell">${this.state}</div>
           <div class="grid__cell">${this.speed}</div>
           <div class="grid__cell">${this.progress}</div>
-          <div class="grid__cell">${this.state}</div>
           <div class="grid__cell">
             <row-toggle-button @click=${this.handleToggle}
               >${this.toggleState}</row-toggle-button
