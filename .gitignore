@@ -36,3 +36,5 @@ __pycache__
 static/js/*
 downloads/*
 .vscode
+
+logs/
