@@ -61,6 +61,7 @@ export class ProgressTable extends BaseTable {
                 .state=${row[1].state}
                 .filename=${row[1].name}
                 .progress=${row[1].progress}
+                .speed=${row[1].dlspeed}
               >
               </progress-row>
             `;

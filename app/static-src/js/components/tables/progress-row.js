@@ -27,9 +27,9 @@ export class ProgressRow extends BaseTableRow {
       pausedDL: "paused download",
       pausedUP: "paused upload",
       queuedDL: "queued download",
-      queuedUP: "queued upload",
+      queuedUP: "complete",
       stalledDL: "stalled download",
-      stalledUP: "stalled upload",
+      stalledUP: "complete",
       unknown: "unknown",
     };
     this.stop_state = Object.values(this.states).splice(0, 9);
@@ -96,6 +96,10 @@ export class ProgressRow extends BaseTableRow {
         type: String,
         attribute: "progress",
       },
+      speed: {
+        type: String,
+        attribute: "speed",
+      },
     };
   }
 
@@ -123,6 +127,10 @@ export class ProgressRow extends BaseTableRow {
     return this.stop_state.includes(this.state) ? "pause" : "resume";
   }
 
+  get speed() {
+    return this._speed;
+  }
+
   set state(value) {
     let oldVals = this.state;
     this._state = this.states[value];
@@ -134,6 +142,12 @@ export class ProgressRow extends BaseTableRow {
     this._progress = `${Math.round(value * 100)}%`;
     this.style.setProperty("--progress", this._progress);
     this.requestUpdate("progress", oldVals);
+  }
+
+  set speed(value) {
+    let oldVals = this.speed;
+    this._speed = `${Math.round(value / 1024 / 1024)} MB/s`;
+    this.requestUpdate("speed", oldVals);
   }
 
   handleToggle() {
@@ -161,6 +175,8 @@ export class ProgressRow extends BaseTableRow {
           </div>
         </div>
         <div class="grid__row__form">
+          <div class="grid__cell">${this.speed}</div>
+          <div class="grid__cell">${this.progress}</div>
           <div class="grid__cell">${this.state}</div>
           <div class="grid__cell">
             <row-toggle-button @click=${this.handleToggle}
