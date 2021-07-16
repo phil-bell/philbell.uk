@@ -2,7 +2,7 @@
   --primary-color: white;
   --secondary-color: black;
   --hover-color: #ffa2a2;
-  --font-family: "Kumbh Sans", sans-serif;
+  --font-family: "Inconsolata", monospace;
 }
 
 ::-webkit-scrollbar {
