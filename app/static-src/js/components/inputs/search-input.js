@@ -102,7 +102,7 @@ export class SearchInput extends LitElement {
         -webkit-font-smoothing: antialiased;
         font-weight: 500;
         min-width: 74px;
-        height: 38px;
+        height: 36px;
         padding: 0;
         margin: 0;
       }
