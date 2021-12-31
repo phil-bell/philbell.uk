@@ -117,7 +117,7 @@ STATIC_ROOT = f"{BASE_DIR}/app/static/"
 
 ROOT_URLCONF = "urls"
 
-DEBUG = True
+DEBUG = False
 
 DOWNLOAD_PATH = "/mnt/hdd/"
 
@@ -134,4 +134,7 @@ LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "app:add"
 LOGOUT_REDIRECT_URL = "app:login"
 
-from .local import *
+try:
+    from .local import *
+except ImportError:
+    print("local.py not found!")

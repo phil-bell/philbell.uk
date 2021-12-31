@@ -55,13 +55,13 @@ def npm():
 
 
 def poetry():
-    run("poetry update")
+    run("poetry install")
 
 
 def deploy_prod():
     git()
-    migrate()
     poetry()
+    migrate()
     npm()
     collectstatic()
     nginx()
