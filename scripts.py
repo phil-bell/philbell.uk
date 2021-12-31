@@ -6,6 +6,9 @@ from threading import Thread
 def run(command):
     _run(command.split())
 
+def kill_prod():
+    run("killall uwsgi")
+
 
 def postgresql():
     run("sudo service postgresql start")
@@ -58,12 +61,18 @@ def poetry():
     run("poetry install")
 
 
+def start_prod():
+    Thread(target=django_prod).start()
+
+
 def deploy_prod():
     git()
     poetry()
     migrate()
     npm()
     collectstatic()
+    kill_prod()
+    start_prod()
     nginx()
 
 
@@ -73,6 +82,3 @@ def start():
     Thread(target=django).start()
     Thread(target=webpack).start()
 
-
-def start_prod():
-    Thread(target=django_prod).start()
