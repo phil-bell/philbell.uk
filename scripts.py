@@ -23,7 +23,7 @@ def django():
 
 
 def django_prod():
-    run("uwsgi --socket :8001 --module app.wsgi --threads 4 --chmod-socket=666 --daemonize logs/uwsgi.logs")
+    run("poetry run uwsgi --socket :8001 --module app.wsgi --threads 4 --chmod-socket=666 --daemonize logs/uwsgi.logs")
 
 
 def webpack():
