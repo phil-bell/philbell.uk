@@ -38,3 +38,4 @@ downloads/*
 .vscode
 
 logs/
+.ruby-version
