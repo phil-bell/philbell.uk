@@ -73,6 +73,7 @@ export class AddRow extends BaseTableRow {
     this.type = "/a/movie";
     this.seeds = "";
     this.magnet = "";
+    this.location = "/a/movie";
   }
 
   static get properties() {
@@ -98,6 +99,9 @@ export class AddRow extends BaseTableRow {
       term: {
         type: String,
         attribute: "term",
+      },
+      location: {
+        type: String,
       },
     };
   }
@@ -183,7 +187,7 @@ export class AddRow extends BaseTableRow {
           <div class="grid__cell" }>
             <input
               @change=${(e) => (this.location = e.target.value)}
-              value=${`${this.type}/${this.term}`}
+              value=${this.type + "/" + this.term}
             />
           </div>
           <div class="grid__cell">
