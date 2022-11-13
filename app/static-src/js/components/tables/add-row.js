@@ -70,7 +70,7 @@ export class AddRow extends BaseTableRow {
   constructor() {
     super();
     this._fileName = "";
-    this._type = "";
+    this.type = "/a/movie";
     this.seeds = "";
     this.magnet = "";
   }
@@ -92,16 +92,13 @@ export class AddRow extends BaseTableRow {
       type: {
         type: String,
       },
-      _type: {
-        type: String,
-      },
       autoType: {
         type: String,
       },
       term: {
         type: String,
-        attribute: "term"
-      }
+        attribute: "term",
+      },
     };
   }
 
@@ -120,36 +117,8 @@ export class AddRow extends BaseTableRow {
       .trim();
   }
 
-  get location() {
-    if (this.type == "tv") {
-      return `${this.type}/${this.term}/`;
-    }
-    return `${this.type}/`;
-  }
-
-  set type(value) {
-    if (value == "movie") {
-      this._type = "movies";
-    } else if (value == "series") {
-      this._type = "tv";
-    } else {
-      this._type = value;
-    }
-  }
-
-  get type() {
-    return this._type;
-  }
-
   async toggleRow(event) {
     this.open = !this.open;
-    await fetch(
-      `https://www.omdbapi.com/?apikey=691083f6&s=${this.term}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        this.type = data.Search[0].Type;
-      });
   }
 
   async handleDownload(event) {
@@ -182,10 +151,6 @@ export class AddRow extends BaseTableRow {
     const infoRow = formRow.previousElementSibling;
     const nameCell = infoRow.firstElementChild;
     const row = infoRow.parentElement;
-    console.log(formRow);
-    console.log(infoRow);
-    console.log(nameCell);
-    console.log(row);
     this.fitContent = !this.fitContent;
   }
 
@@ -211,16 +176,15 @@ export class AddRow extends BaseTableRow {
           </div>
           <div class="grid__cell">
             <select @change=${(e) => (this.type = e.target.value)}>
-              <option>--</option>
-              <option ?selected=${this.type == "movies"} value="movie">
-                Movie
-              </option>
-              <option ?selected=${this.type == "tv"} value="tv">TV</option>
-              <option value="audiobook">Audiobook</option>
+              <option value="/a/movie">Movie</option>
+              <option value="/b/tv">TV</option>
             </select>
           </div>
-          <div class="grid__cell" .hidden=${this.type !== "tv"}>
-            <input value=${this.term} />
+          <div class="grid__cell" }>
+            <input
+              @change=${(e) => (this.location = e.target.value)}
+              value=${`${this.type}/${this.term}}
+            />
           </div>
           <div class="grid__cell">
             <button @click=${this.handleDownload}>download</button>
