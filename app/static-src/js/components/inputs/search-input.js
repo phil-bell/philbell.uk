@@ -56,8 +56,7 @@ export class SearchInput extends LitElement {
         background: var(--primary-color);
         color: var(--secondary-color);
         border: 1px solid var(--secondary-color);
-        border-right: 0;
-        border-radius: 8px 0 0 8px;
+        border-radius: 8px;
         height: 36px;
         width: 440px;
         text-align: center;
@@ -75,7 +74,6 @@ export class SearchInput extends LitElement {
       }
       .search__input:focus {
         border: 1px solid var(--hover-color);
-        border-right: 0;
         outline: none;
       }
       .search__input:focus ~ .search__label {
@@ -96,7 +94,7 @@ export class SearchInput extends LitElement {
         color: var(--secondary-color);
         background: var(--primary-color);
         border: 1px solid var(--secondary-color);
-        border-radius: 0 8px 8px 0;
+        border-radius: 8px;
         padding: 5px;
         font-family: var(--font-family);
         -webkit-font-smoothing: antialiased;
@@ -105,6 +103,7 @@ export class SearchInput extends LitElement {
         height: 36px;
         padding: 0;
         margin: 0;
+        margin-left: 4px;
       }
 
       .search__button:hover {
@@ -129,10 +128,10 @@ export class SearchInput extends LitElement {
         .search__container {
           overflow: visible;
         }
-        .search__input:focus ~ .search__label{
+        .search__input:focus ~ .search__label {
           display: none;
         }
-        .search__input:not(:placeholder-shown) ~ .search__label{
+        .search__input:not(:placeholder-shown) ~ .search__label {
           display: none;
         }
       }
