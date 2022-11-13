@@ -183,7 +183,7 @@ export class AddRow extends BaseTableRow {
           <div class="grid__cell" }>
             <input
               @change=${(e) => (this.location = e.target.value)}
-              value=${`${this.type}/${this.term}}
+              value=${`${this.type}/${this.term}`}
             />
           </div>
           <div class="grid__cell">
